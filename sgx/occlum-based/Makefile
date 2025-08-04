@@ -8,7 +8,7 @@ OCCLUM_GCC = occlum-gcc
 all: occlum-hello
 
 
-occlum-cpc: helloworld.c
+occlum-hello: helloworld.c
 	$(OCCLUM_GCC) -Wall -o $@ $^ 
 
 

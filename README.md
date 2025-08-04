@@ -20,10 +20,10 @@ Also, if (one of) the main websites provides a "simple enough" guide, we will ju
 
 # Repository structure
 - There is a folder corresponding to each TEE, and each folder has a Readme file with the useful information required to deploy simple programs in the TEE.
-1. [Intel SGX](sgx/README.md): deploys SGX applications using [Intel SGX SDK](), [Gramine LibOS](https://gramine.readthedocs.io/en/stable/), and [Occlum LibOS](https://occlum.readthedocs.io/en/latest/quickstart.html#). 
+1. [Intel SGX](sgx/README.md): deploys SGX applications using [Intel SGX SDK](sgx/sdk-based/README.md), [Gramine LibOS](sgx/gramine-based/README.md), and [Occlum LibOS](sgx/occlum-based/README.md). 
 2. [Arm TrustZone](trustzone/README.md): deploys Arm TrustZone cortex A application with OpTEE.
 3. [Intel TDX](tdx/README.md)
-4. [AMD SEV-SNP]()
+4. [AMD SEV-SNP](sev-snp/README.md)
 
 - Most or all tests here are based on `Ubuntu 24.04.2 LTS`
 

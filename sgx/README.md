@@ -17,14 +17,16 @@ Install software packages required packages by SGX software.
 sudo apt-get install build-essential ocaml automake autoconf libtool wget python3 libssl-dev dkms
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 1
 ```
-1. **SGX driver installation**: Mainline kernel release 5.11 or higher includes an SGX in-kernel driver: `/dev/{sgx_enclave, sgx_provision}`. You can verify the presence of this with `ls -la /dev/sgx*`. If your kernel does not include the in-kernel driver, download and install the driver for your Ubuntu release. For example, for Ubuntu 24.04:
+### SGX driver installation
+Mainline kernel release 5.11 or higher includes an SGX in-kernel driver: `/dev/{sgx_enclave, sgx_provision}`. You can verify the presence of this with `ls -la /dev/sgx*`. If your kernel does not include the in-kernel driver, download and install the driver for your Ubuntu release. For example, for Ubuntu 24.04:
 ```bash
 wget https://download.01.org/intel-sgx/sgx-linux/2.26/distro/ubuntu24.04-server/sgx_linux_x64_driver_1.41.bin #
 chmod 777 sgx_linux_x64_driver_${version}.bin # make the installer executable
 sudo ./sgx_linux_x64_driver_${version}.bin # run the installer
 ```
 
-1. **SGX PSW installation**: The PSW is a runtime software stack to support the execution of SGX applications. For example, it handles SGX enclave creation, SGX context switches, attestation services, etc.
+### SGX PSW installation
+The PSW is a runtime software stack to support the execution of SGX applications. For example, it handles SGX enclave creation, SGX context switches, attestation services, etc.
 - Setup apt source list to point to prebuilt PSW packages on Intel's servers.
 ```bash
 # For Ubuntu 24.04; see SGX installation guide for other OS versionss
@@ -35,7 +37,8 @@ echo 'deb [trusted=yes arch=amd64] https://download.01.org/intel-sgx/sgx_repo/ub
 sudo apt-get update
 sudo apt-get install libsgx-epid libsgx-quote-ex libsgx-dcap-ql
 ```
-1. **SGX SDK installation**: The SDK provides a framework for building SGX-based applications. Download and install the prebuilt package as follows.
+### SGX SDK installation
+The SDK provides a framework for building SGX-based applications. Download and install the prebuilt package as follows.
 ```bash
 wget https://download.01.org/intel-sgx/sgx-linux/2.26/distro/ubuntu24.04-server/sgx_linux_x64_sdk_2.26.100.0.bin # download SDK installer
 chmod +x sgx_linux_x64_sdk_2.26.100.0.bin # make installer executable

@@ -30,15 +30,15 @@ cd byte-unixbench/UnixBench
 - Example results on TDX VM
 ```bash 
 System Benchmarks Partial Index              BASELINE       RESULT    INDEX
-System Call Overhead                          15000.0   19431027.3  12954.0
+System Call Overhead                          15000.0   18750490.3  12500.3
 ```
-- The "baseline" or reference system is a `SPARCstation 20-61`. This shows system calls were `12954` times faster in TDX.
+- The "baseline" or reference system is a `SPARCstation 20-61`. This shows system calls were `12500` times faster in TDX.
 - Corresponding results on regular VM (no TDX) with 32 CPUs
 ```bash
 System Benchmarks Partial Index              BASELINE       RESULT    INDEX
 System Call Overhead                          15000.0   18801524.5  12534.3
 ```
-I expected slightly better results for the non TDX VM; for now, I'd attribute this delta to the different kernel build config. TODO: switch the regular VM to a TDX VM and redo tests.
+- Results slightly better on non TDX VM; TDX introduces overhead for some syscalls.
 - Corresponding results on non virtualized (bare metal) system
 ```bash
 System Benchmarks Partial Index              BASELINE       RESULT    INDEX

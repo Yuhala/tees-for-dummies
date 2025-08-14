@@ -28,11 +28,11 @@ TEEs use hardware-based mechanisms (i.e., in the CPU) for encrypting memory and 
 There is a folder corresponding to each TEE, and each folder has a Readme file with the useful information required to deploy simple programs in the TEE.
 1. [Intel SGX](sgx/README.md): deploying SGX applications using the [Intel SGX SDK](sgx/sdk-based/README.md), [Gramine LibOS](sgx/gramine-based/README.md), and [Occlum LibOS](sgx/occlum-based/README.md). 
 2. [Arm TrustZone](trustzone/README.md): deploying Arm TrustZone cortex A application with [OP-TEE](https://optee.readthedocs.io/en/latest/general/about.html).
-3. [Intel TDX](tdx/README.md): deploying Intel-based CVMs
-4. [AMD SEV-SNP](sev-snp/README.md): deploying 
+3. [Intel TDX](tdx/README.md): deploying TDX-based CVMs.
+4. [AMD SEV-SNP](sev-snp/README.md): deploying SEV-based CVMs.
 5. [Kata containers](./kata/README.md): deploying confidential containers with Kata. 
     
-- Most of our tests and setups use Ubuntu-based host and guest OSes.
+Most of our tests and setups use Ubuntu-based host and guest OSes.
 
 ## Author
 - [Peterson Yuhala](https://yuhala.github.io/) has a PhD in computer science, with a specialization in systems security with trusted execution environments. You can find his [PhD thesis here](https://yuhala.github.io/assets/pdf/thesis-peterson-yuhala.pdf).

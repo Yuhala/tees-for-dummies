@@ -1,5 +1,5 @@
 ## Intel trusted domain extensions (TDX)
-> As opposed to TEEs like SGX and TrustZone which protect a single program at runtime, TDX protects an entire VM. In TDX, a protected VM is called a _trust domains_ (TD).
+> As opposed to TEEs like SGX and TrustZone which protect a single program at runtime, TDX protects an entire VM. In TDX, a protected VM is called a _trust domain_ (TD).
 The VM's memory is transparently encrypted/decrypted using multi-key Total Memory Encryption (MKTME) at cacheline granularity within the CPU. Each VM is associated to a unique key which cannot be accessed by the hypervisor or other VMs. A central component called the *TDX Module* sits between TDs and the hypervisor and handles access control, TD context switches, etc.
   
 ## Setup 

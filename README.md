@@ -30,7 +30,7 @@ There is a folder corresponding to each TEE, and each folder has a Readme file w
 2. [Arm TrustZone](trustzone/README.md): deploying Arm TrustZone cortex A application with [OP-TEE](https://optee.readthedocs.io/en/latest/general/about.html).
 3. [Intel TDX](tdx/README.md): deploying Intel-based CVMs
 4. [AMD SEV-SNP](sev-snp/README.md): deploying 
-5. [Kata containers](https://katacontainers.io/): deploying confidential containers with Kata. 
+5. [Kata containers](./kata/README.md): deploying confidential containers with Kata. 
     
 - Most of our tests and setups use Ubuntu-based host and guest OSes.
 

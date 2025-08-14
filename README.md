@@ -7,7 +7,8 @@ The purpose of this repo is to provide a central base with just enough (i.e., mi
 
 All tutorials in this repo are Ubuntu-based. Some links may be added to redirect you to the main website if you use a different OS.
 Also, if (one of) the main websites provides a "simple enough" guide, we will just redirect you there. Otherwise, we shall simplify.
-- We assume you have access to the hardware and do not require techniques like remote attestation for hardware verification. Where necessary we will provide links to more extensive documentation on these aspects.  
+
+We assume you have access to the hardware and do not require techniques like remote attestation for hardware verification. Where necessary we will provide links to more extensive documentation on these aspects.  
 
 ## Background on trusted execution environments
 > Trusted execution environments (TEEs) are isolated processing environments provided by the CPU to ensure confidentiality, integrity, and freshness of data and code at runtime. 
@@ -16,14 +17,15 @@ Also, if (one of) the main websites provides a "simple enough" guide, we will ju
   - **Freshness**: we always have the most up-to-date version of the secured data.
   
 TEEs use hardware-based mechanisms (i.e., in the CPU) for encrypting memory and enforcing strong access control mechanisms. They can be classified (broadly) into two categories: 
-    1. TEEs for **process-level isolation**: they enable a process to create a secure encrypted (and integrity-protected) region, usually called an _enclave_, in its address space at runtime. Memory pages in this region can only be decrypted in the CPU. Examples include Intel software guard extensions (SGX) and Arm TrustZone (does only memory access control checks, no encryption).
+
+1. TEEs for **process-level isolation**: they enable a process to create a secure encrypted (and integrity-protected) region, usually called an _enclave_, in its address space at runtime. Memory pages in this region can only be decrypted in the CPU. Examples include Intel software guard extensions (SGX) and Arm TrustZone (does only memory access control checks, no encryption).
    
-    2. TEEs for **virtual machine (VM)-level isolation**: they protect entire VMs rather than single programs. Examples: Intel trusted domain extensions (TDX), AMD secure encrypted virtualizatin (SEV) with secure nested paging (SNP), or Arm confidential compute architecture (CCA).
+2. TEEs for **virtual machine (VM)-level isolation**: they protect entire VMs rather than single programs. Examples: Intel trusted domain extensions (TDX), AMD secure encrypted virtualizatin (SEV) with secure nested paging (SNP), or Arm confidential compute architecture (CCA).
 
 
 
 ## Repository structure
-- There is a folder corresponding to each TEE, and each folder has a Readme file with the useful information required to deploy simple programs in the TEE.
+There is a folder corresponding to each TEE, and each folder has a Readme file with the useful information required to deploy simple programs in the TEE.
 1. [Intel SGX](sgx/README.md): deploying SGX applications using the [Intel SGX SDK](sgx/sdk-based/README.md), [Gramine LibOS](sgx/gramine-based/README.md), and [Occlum LibOS](sgx/occlum-based/README.md). 
 2. [Arm TrustZone](trustzone/README.md): deploying Arm TrustZone cortex A application with [OP-TEE](https://optee.readthedocs.io/en/latest/general/about.html).
 3. [Intel TDX](tdx/README.md): deploying Intel-based CVMs

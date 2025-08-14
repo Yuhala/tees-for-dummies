@@ -1,18 +1,16 @@
 
 ## Kata Containers
-[Kata containers](Kata containers) provide a way to easily deploy containerized applications in lightweight VMs, enhancing isolation and security. Kata supports VM-based TEEs like TDX and AMD SEV
+>[Kata containers](https://katacontainers.io/) provide a way to easily deploy containerized applications in lightweight VMs, enhancing isolation and security. Kata supports VM-based TEEs like TDX and AMD SEV
 
 
 
 ## Installing Kata
-
+TODO
 
 
 
 ## Deploying a TEE-secured Kata container
-
-
-
+TODO
 
 
 

@@ -1,5 +1,7 @@
 ## TEEs for dummies
-The purpose of this repo is to serve as a guide for easily setting up and testing _trusted execution environment_ (TEE) technologies like Intel SGX, Intel TDX, AMD SEV-SNP, Arm TrustZone, or GPU TEEs on Nvidia H100.
+![tees-for-dummies](https://img.shields.io/badge/TEEs_for-dummies-588157.svg?style=for-the-badge&logo=springsecurity)
+
+This repo helps you get started with setting up and testing _trusted execution environment_ (TEE) technologies like Intel SGX, Intel TDX, AMD SEV-SNP, Arm TrustZone, or GPU TEEs on Nvidia H100.
 
 ## Background on trusted execution environments
 > Trusted execution environments (TEEs) are isolated processing environments provided by the CPU to ensure confidentiality, integrity, and freshness of data and code at runtime. 
@@ -7,10 +9,15 @@ The purpose of this repo is to serve as a guide for easily setting up and testin
   - **Integrity**: ensures the data cannot be modified/tampered with by an unauthorized entity; all tampering can be detected.
   - **Freshness**: we always have the most up-to-date version of the secured data.
   
-- TEEs use hardware-based mechanisms (i.e., in the CPU) for encrypting memory and enforcing strong access control mechanisms.  
+- TEEs use hardware-based mechanisms (i.e., in the CPU) for encrypting memory and enforcing strong access control mechanisms. 
+
+![TCB variations with TEEs](./tee-tcb.png)
 - TEEs can be broadly classified into two categories: 
     1. TEEs for **process-level isolation**: they enable a process to create a secure encrypted (and integrity-protected) region, usually called an _enclave_, in its address space at runtime. Memory pages in this region can only be decrypted in the CPU. Examples include Intel software guard extensions (SGX) and Arm TrustZone (does only memory access control checks, no encryption).
     2. TEEs for **virtual machine (VM)-level isolation**: they protect entire VMs rather than single programs. Examples: Intel trusted domain extensions (TDX), AMD secure encrypted virtualizatin (SEV) with secure nested paging (SNP), or Arm confidential compute architecture (CCA).
+
+Essentially, the difference between both categories is the degree of isolation they provide, or the size of the _trusted computing base_ (TCB), which represents all software (and hardware) that needs to be trusted.
+
 
 ## Why this repo?
 - **Problem**: From my experience, it is often difficult to find practical and concise **hands on** guides on how to use most TEE technologies. Though official documentations are nice, they usually contain too much information not very necessary for a newbie willing to do a few quick tests. Moreover, it's rare to find articles that bring all of them together.
@@ -21,7 +28,7 @@ Also, if (one of) the main websites provides a "simple enough" guide, we will ju
 
 # Repository structure
 - There is a folder corresponding to each TEE, and each folder has a Readme file with the useful information required to deploy simple programs in the TEE.
-1. [Intel SGX](sgx/README.md): deploys SGX applications using the [Intel SGX SDK](sgx/sdk-based/README.md), [Gramine LibOS](sgx/gramine-based/README.md), and [Occlum LibOS](sgx/occlum-based/README.md). 
+1. [Intel SGX](sgx/README.md): deploys SGX applications using the [Intel SGX SDK](sgx/sdk-based/README.md), [Gramine LibOS](sgx/gramine-based/README.md), [Occlum LibOS](sgx/occlum-based/README.md), and a [WebAssembly Runtime]().
 2. [Arm TrustZone](trustzone/README.md): deploys Arm TrustZone cortex A application with OpTEE.
 3. [Intel TDX](tdx/README.md)
 4. [AMD SEV-SNP](sev-snp/README.md)

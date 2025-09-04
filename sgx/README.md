@@ -69,3 +69,5 @@ TODO: do an ecall and ocall and show that memory is encrypted by dumping enclave
 
 
 For further information on writing Intel SGX software, see the [Intel SGX Developer Reference for Linux]().
+
+## More SGX documentation and publications

@@ -28,11 +28,12 @@ Essentially, the difference between both categories is the degree of isolation t
 
 
 # Repository structure
-- There is a folder corresponding to each TEE, and each folder has a Readme file with the useful information required to deploy simple programs in the TEE.
+There is a folder corresponding to each TEE technology, and each folder contains a Readme file explaining how to setup and test the TEE technology.
 1. [Intel SGX](sgx/README.md): deploys SGX applications using the [Intel SGX SDK](sgx/sdk-based/README.md), [Gramine LibOS](sgx/gramine-based/README.md), [Occlum LibOS](sgx/occlum-based/README.md), and a [WebAssembly Runtime]().
-2. [Arm TrustZone](trustzone/README.md): deploys Arm TrustZone cortex A application with OpTEE.
-3. [Intel TDX](tdx/README.md)
-4. [AMD SEV-SNP](sev-snp/README.md)
+2. [Arm TrustZone](trustzone/README.md): deploys applications protected with Arm TrustZone (Cortex-A), using OP-TEE.
+3. [Intel TDX](tdx/README.md): builds TDX-capable confidential VMs.
+4. [AMD SEV-SNP](sev-snp/README.md): builds SEV-capable confidential VMs.
+5. [RISC-V PMP](): deploys applications protected with RISC-V's physical memory protection based on KeyStone framework. 
 
 
 Most of the tutorials are Ubuntu-based. Some links may be added to redirect you to the main website if you use a different OS. Also, if the main TEE website provides a "simple enough" guide, we will just redirect you there. Otherwise, we will do our best to simplify.

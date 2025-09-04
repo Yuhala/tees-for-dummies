@@ -2,7 +2,7 @@
 
 Arm TrustZone (TZ) is a hardware security extension in ARM-based processors that allows the processor to be split into two protection domains: a **secure world**, wherein data is processed securely and isolated from the host OS (or hypervisor), and a **normal world** which has no access to secure world resources. At any point in time, the processor operates exclusively in one of these worlds. A privileged software component called a _secure monitor_ enables context switching between both worlds using _secure monitor calls_ (SMC), analogous to SGX ecalls and ocalls.
 
-A hardware component called the **TrustZone address space controller**(TZASC) enforces the separation between the secure world and the normal world by controlling access to physical memory. Essentially, TZASC can be programmed/configured such that some parts of physical memory (contiguous blocks) are only accessible in the secure world, or both worlds. The _non-secure_(NS) bit stored in the _secure configuration register_(SCR) is used to determine which world the processor is currently operating in.
+A hardware component called the **TrustZone address space controller**(TZASC) enforces the separation between the secure world and the normal world by controlling access to physical memory. Essentially, TZASC can be programmed/configured such that some parts of physical memory (contiguous blocks) are only accessible in the secure world, or both worlds. A special bit called the _non-secure_ (NS) bit, stored in the _secure configuration register_(SCR), is used to determine which world the processor is currently operating in.
 
 ![Arm TrustZone architecture](./tz-arch.png)
 
@@ -11,7 +11,7 @@ Contrary to TEE technologies like SGX which encrypt data stored in memory, TZ on
 
 
 ## Hardware and software setup
-From my experience, it is trickier to get the right hardware with both hardware and decent software support, compared to server-end TEEs like SGX. I believe this is partly due to the fragmented nature of the Arm ecosystem, as Arm licences IP to many different SoC vendors (STMicro, NXP, HiSilicon, Broadcom, etc). Nevertheless, for beginners, I recommend boards by [STMicroelectronics](). They are relatively cheap and provide excellent documentation. They provide both Cortex-M (M for "microcontroller") processors for low power microcontroller applications, and Cortex-A (A for "Application") processors for more running full-fledged OSes like Linux. 
+From my experience, it is trickier to get the right hardware with both hardware and decent software support, compared to server-end TEEs like SGX. I believe this is partly due to the fragmented nature of the Arm ecosystem, as Arm licences IP to many different SoC vendors (STMicro, NXP, HiSilicon, Broadcom, etc). Nevertheless, for beginners, I recommend boards by [STMicroelectronics](). They are relatively cheap and provide excellent documentation. They provide both Cortex-M (M for "microcontroller") processors for low power microcontroller applications, and Cortex-A (A for "Application") processors for running full-fledged OSes like Linux. 
 
 For this tutorial/guide, the board we will use is the [STM32MP157D-DK1](https://www.st.com/resource/en/data_brief/stm32mp157d-dk1.pdf) which features a Cortex-A7 core, TrustZone support, and excellent documentation.
 

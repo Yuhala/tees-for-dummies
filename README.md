@@ -2,19 +2,11 @@
 ## TEEs for dummies
 ![tees-for-dummies](https://img.shields.io/badge/TEEs_for-dummies-588157.svg?style=for-the-badge&logo=springsecurity)
 
-This repo helps you get started with setting up and testing _trusted execution environment_ (TEE) technologies like Intel SGX, Intel TDX, AMD SEV-SNP, Arm TrustZone, or GPU TEEs on Nvidia H100.
+>This repo helps you get started with setting up and testing _trusted execution environment_ (TEE) technologies like Intel SGX, Intel TDX, AMD SEV-SNP, Arm TrustZone, or GPU TEEs on Nvidia H100.
 
-## About
->The purpose of this repo is to serve as a guide for easily setting up and testing _trusted execution environment_ (TEE) technologies like Intel SGX, Intel TDX, AMD SEV-SNP, Arm TrustZone, or GPU TEEs on Nvidia H100.
-
-**Problem**: From my experience, it is often difficult to find practical and concise **hands on** guides on how to use most TEE technologies. Though official documentations are nice, they usually contain too much information not very necessary for a newbie willing to do a few quick tests. Moreover, it's rare to find articles that bring all of them together.
+From my experience, it is often difficult to find practical and concise **hands on** guides on how to use most TEE technologies. Though official documentations are nice, they usually contain too much information not very necessary for a newbie willing to do a few quick tests. Moreover, it's rare to find articles that bring all of them together.
   
-The purpose of this repo is to provide a central base with just enough (i.e., minimal) information and easy-to-follow guides on how to setup and do simple tests with the given TEEs on small applications. It should not be used as a reference guide for deploying your applications in production. In such situations, the official documentations are the most complete and should be followed. This repo as the name suggests, is a relatively easy starting point for "dummies".
-
-All tutorials in this repo are Ubuntu-based. Some links may be added to redirect you to the main website if you use a different OS.
-Also, if (one of) the main websites provides a "simple enough" guide, we will just redirect you there. Otherwise, we shall simplify.
-
-We assume you have access to the hardware and do not require techniques like remote attestation for hardware verification. Where necessary we will provide links to more extensive documentation on these aspects.  
+The repo provides a central base with just enough (i.e., minimal) information and easy-to-follow guides on how to setup and do simple tests with well known TEE technologies. It should not be used as a reference guide for deploying your applications in production; in such situations, the official documentations are the most complete and should be followed. This repo, as its name suggests, is a relatively easy starting point for "dummies".
 
 
 ## Background on trusted execution environments
@@ -35,13 +27,6 @@ We assume you have access to the hardware and do not require techniques like rem
 Essentially, the difference between both categories is the degree of isolation they provide, or the size of the _trusted computing base_ (TCB), which represents all software (and hardware) that needs to be trusted.
 
 
-## Why this repo?
-- **Problem**: From my experience, it is often difficult to find practical and concise **hands on** guides on how to use most TEE technologies. Though official documentations are nice, they usually contain too much information not very necessary for a newbie willing to do a few quick tests. Moreover, it's rare to find articles that bring all of them together.
-- The purpose of this repo is to provide a central base with just enough (i.e., minimal) information and easy-to-follow guides on how to setup and do simple tests with the given TEEs on small applications. It should not be used as a reference guide for deploying your applications in production. In such situations, the official documentations are the most complete and should be followed. This repo as the name suggests, is a relatively easy starting point for "dummies".
-- All tutorials in this repo are Ubuntu-based. Some links may be added to redirect you to the main website if you use a different OS.
-Also, if (one of) the main websites provides a "simple enough" guide, we will just redirect you there. Otherwise, we shall simplify.
-- We assume you have access to the hardware and do not require techniques like remote attestation for hardware verification. Where necessary we will provide links to more extensive documentation on these aspects.  
-
 # Repository structure
 - There is a folder corresponding to each TEE, and each folder has a Readme file with the useful information required to deploy simple programs in the TEE.
 1. [Intel SGX](sgx/README.md): deploys SGX applications using the [Intel SGX SDK](sgx/sdk-based/README.md), [Gramine LibOS](sgx/gramine-based/README.md), [Occlum LibOS](sgx/occlum-based/README.md), and a [WebAssembly Runtime]().
@@ -49,6 +34,10 @@ Also, if (one of) the main websites provides a "simple enough" guide, we will ju
 3. [Intel TDX](tdx/README.md)
 4. [AMD SEV-SNP](sev-snp/README.md)
 
+
+Most of the tutorials are Ubuntu-based. Some links may be added to redirect you to the main website if you use a different OS. Also, if the main TEE website provides a "simple enough" guide, we will just redirect you there. Otherwise, we will do our best to simplify.
+
+The tutorials assume you have TEE-enabled hardware and do not require techniques like remote attestation for hardware verification (used in production). Nevertheless, we provide information on what kind of hardware supports the TEE technology.
 
 
 ## Author

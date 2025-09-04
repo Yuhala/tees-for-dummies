@@ -1,10 +1,10 @@
 ## Arm TrustZone
 
-![Arm TrustZone architecture](./tz-arch.png)
-
 Arm TrustZone (TZ) is a hardware security extension in ARM-based processors that enables the processor to be split into two protection domains: a **secure world**, wherein data is processed securely and isolated from the host OS, and a **normal world**. At any point in time, the processor operates exclusively in one of these worlds. A privileged software component called a _secure monitor_ enables context switching between both worlds using _secure monitor calls_ (SMC), analogous to SGX ecalls and ocalls.
 
 A hardware component called the **TrustZone address space controller**(TZASC) enforces the separation between the secure world and the normal world by controlling access to physical memory. Essentially, TZASC can be programmed/configured such that some parts of physical memory (contiguous blocks) are only accessible in the secure world, or both worlds. The _non-secure_(NS) bit stored in the _secure configuration register_(SCR) is used to determine which world the processor is currently operating in.
+
+![Arm TrustZone architecture](./tz-arch.png)
 
 Contrary to TEE technologies like SGX which encrypt data stored in memory, TZ only performs access control checks to ensure confidentiality. 
 
@@ -39,6 +39,6 @@ A simple analogy is OP-TEE is to TrustZone what the Intel SGX SDK is to SGX.
 
 
 
-[^1]: OP-TEE was initially created for Arm TrustZone, it has been structured to be compatible with other isolation technologies.
+[^1]: Though OP-TEE was initially created for Arm TrustZone, it has been structured to be compatible with other isolation technologies.
 
 

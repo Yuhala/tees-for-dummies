@@ -1,14 +1,30 @@
+
 ## TEEs for dummies
 ![tees-for-dummies](https://img.shields.io/badge/TEEs_for-dummies-588157.svg?style=for-the-badge&logo=springsecurity)
 
 This repo helps you get started with setting up and testing _trusted execution environment_ (TEE) technologies like Intel SGX, Intel TDX, AMD SEV-SNP, Arm TrustZone, or GPU TEEs on Nvidia H100.
 
+## About
+>The purpose of this repo is to serve as a guide for easily setting up and testing _trusted execution environment_ (TEE) technologies like Intel SGX, Intel TDX, AMD SEV-SNP, Arm TrustZone, or GPU TEEs on Nvidia H100.
+
+**Problem**: From my experience, it is often difficult to find practical and concise **hands on** guides on how to use most TEE technologies. Though official documentations are nice, they usually contain too much information not very necessary for a newbie willing to do a few quick tests. Moreover, it's rare to find articles that bring all of them together.
+  
+The purpose of this repo is to provide a central base with just enough (i.e., minimal) information and easy-to-follow guides on how to setup and do simple tests with the given TEEs on small applications. It should not be used as a reference guide for deploying your applications in production. In such situations, the official documentations are the most complete and should be followed. This repo as the name suggests, is a relatively easy starting point for "dummies".
+
+All tutorials in this repo are Ubuntu-based. Some links may be added to redirect you to the main website if you use a different OS.
+Also, if (one of) the main websites provides a "simple enough" guide, we will just redirect you there. Otherwise, we shall simplify.
+
+We assume you have access to the hardware and do not require techniques like remote attestation for hardware verification. Where necessary we will provide links to more extensive documentation on these aspects.  
+
+
 ## Background on trusted execution environments
-> Trusted execution environments (TEEs) are isolated processing environments provided by the CPU to ensure confidentiality, integrity, and freshness of data and code at runtime. 
+> A Trusted Execution Environment (TEE) is a hardware-enforced secure execution context that enables code to be executed in isolation from the primary operating environment, such as the operating system or hypervisor.
+
   - **Confidentiality**: ensures the data is not accessible to unauthorized entities.
   - **Integrity**: ensures the data cannot be modified/tampered with by an unauthorized entity; all tampering can be detected.
   - **Freshness**: we always have the most up-to-date version of the secured data.
   
+
 - TEEs use hardware-based mechanisms (i.e., in the CPU) for encrypting memory and enforcing strong access control mechanisms. 
 
 ![TCB variations with TEEs](./tee-tcb.png)
@@ -33,9 +49,9 @@ Also, if (one of) the main websites provides a "simple enough" guide, we will ju
 3. [Intel TDX](tdx/README.md)
 4. [AMD SEV-SNP](sev-snp/README.md)
 
-- Most or all tests here are based on `Ubuntu 24.04.2 LTS`
 
-# Author
+
+## Author
 - [Peterson Yuhala](https://yuhala.github.io/) has a PhD in computer science, with a specialization in systems security with trusted execution environments. You can find his [PhD thesis here](https://yuhala.github.io/assets/pdf/thesis-peterson-yuhala.pdf).
   
 

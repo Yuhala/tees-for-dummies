@@ -1,6 +1,5 @@
 ## Arm TrustZone
 
-<<<<<<< HEAD
 ![Arm TrustZone architecture](./tz-arch.png)
 
 Arm TrustZone (TZ) is a hardware security extension in ARM-based processors that enables the processor to be split into two protection domains: a **secure world**, wherein data is processed securely and isolated from the host OS, and a **normal world**. At any point in time, the processor operates exclusively in one of these worlds. A privileged software component called a _secure monitor_ enables context switching between both worlds using _secure monitor calls_ (SMC), analogous to SGX ecalls and ocalls.
@@ -22,33 +21,18 @@ Even with a board with TrustZone support, one needs to get the right software to
 A simple analogy is OP-TEE is to TrustZone what the Intel SGX SDK is to SGX.
 > The official OP-TEE documentation defines it as : "a Trusted Execution Environment (TEE) designed as companion to a non-secure Linux kernel > running on Arm Cortex-A cores using the TrustZone technology". 
 > Personally, I think this definition could be confusing to a beginner who considers TrustZone as the "TEE" technology. Hence I refer to OP-TEE as a framework for building TZ applications. 
-=======
->>>>>>> refs/remotes/origin/main
+
+- TODO: explain OP-TEE architecture
 
 
 
-
-
-
-
-
-
-
-
-
-
-<<<<<<< HEAD
 ## More TrustZone documentation and publications
 1. [Demystifying Arm TrustZone: A Comprehensive Survey](https://www.dpss.inesc-id.pt/~nsantos/papers/pinto_acsur19.pdf)
 2. [TrustZone Explained: Architectural Features and Use Cases](https://www.researchgate.net/profile/Bernard-Ngabonziza-2/publication/312182612_TrustZone_Explained_Architectural_Features_and_Use_Cases/links/59f26a8a0f7e9beabfcc636b/TrustZone-Explained-Architectural-Features-and-Use-Cases.pdf)
-3. 
-=======
->>>>>>> refs/remotes/origin/main
+3. [Nice article on Arm TrustZone and OP-TEE](https://www.linkedin.com/pulse/arm-trustzone-unlocking-secure-world-embedded-systems-khaled-el-sayed-a3hpf/)
 
 
 
-
-<<<<<<< HEAD
 ## Other platforms with good TrustZone and OP-TEE support
 1. [Nvidia Jetson AGX boards](https://docs.nvidia.com/jetson/archives/r36.2/DeveloperGuide/SD/Security/OpTee.html)
 2. [All platforms mentioned here](https://optee.readthedocs.io/en/latest/general/platforms.html)
@@ -56,8 +40,5 @@ A simple analogy is OP-TEE is to TrustZone what the Intel SGX SDK is to SGX.
 
 
 [^1]: OP-TEE was initially created for Arm TrustZone, it has been structured to be compatible with other isolation technologies.
-=======
-## More information
-- [Nice article on Arm TrustZone and OP-TEE](https://www.linkedin.com/pulse/arm-trustzone-unlocking-secure-world-embedded-systems-khaled-el-sayed-a3hpf/)
-- 
->>>>>>> refs/remotes/origin/main
+
+

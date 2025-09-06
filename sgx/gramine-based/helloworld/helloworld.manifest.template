@@ -1,0 +1,18 @@
+# Hello World manifest file example
+
+#loader.entrypoint = "file:{{ gramine }}"
+libos.entrypoint = "/helloworld"
+loader.log_level = "{{ log_level }}"
+
+loader.env.LD_LIBRARY_PATH = "/lib"
+
+fs.mounts = [
+  { path = "/lib", uri = "file:{{ gramine.runtimedir() }}" },
+]
+
+sgx.debug = true
+
+sgx.trusted_files = [
+  "file:helloworld",
+  "file:{{ gramine.runtimedir() }}/",
+]

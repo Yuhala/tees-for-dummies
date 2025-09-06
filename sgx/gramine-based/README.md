@@ -43,7 +43,7 @@ gramine-sgx helloworld
 
 # build and run without SGX 
 make
-gramine-sgx helloworld
+gramine-direct helloworld
 ```
 
 - TODO: explain how the manifest file works

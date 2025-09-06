@@ -1,6 +1,7 @@
 ## AMD secure encrypted virtualiation (SEV)
 > As the name suggests, SEV is a TEE for creating confidential virtual machines (CVMs) on AMD-based processors. It uses AES to encrypt a CVM's private memory. The latter can only be decrypted within the CPU when the CVM is being executed.
 
+- !!! TODO: Readme incomplete and not tested 
 ## Setup
 - To configure and enable TDX on your server, follow this [Readme from AMD](https://github.com/AMDESE/AMDSEV/blob/master/README.md). Here we will use the example setup provided for Ubuntu 18.04.
 

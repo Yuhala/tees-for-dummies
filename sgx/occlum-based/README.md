@@ -1,15 +1,15 @@
 ## Deploying SGX applications using Occlum LibOS
-- Similar to Gramine, [Occlum](https://github.com/occlum/occlum) is a library OS which allows to run unmodified applications inside an SGX enclave. It is also based on a [academic paper from ASPLOS'20](https://madsys.cs.tsinghua.edu.cn/publication/occlum-secure-and-efficient-multitasking-inside-a-single-enclave-of-intel-sgx/ASPLOS20-shen.pdf)
+- Similar to Gramine, [Occlum](https://github.com/occlum/occlum) is a library OS which allows to run unmodified applications inside an SGX enclave. It is also based on an [academic paper from ASPLOS'20](https://madsys.cs.tsinghua.edu.cn/publication/occlum-secure-and-efficient-multitasking-inside-a-single-enclave-of-intel-sgx/ASPLOS20-shen.pdf).
 
 ## Setup 
-- To use Occlum, we can either download its repo from GitHub and build as described [here](https://occlum.readthedocs.io/en/latest/build_and_install.html), or use a Docker-based Occlum image with the Occlum runtime already setup. We shall use the latter approach. 
+- To use Occlum, we can either download its repo from GitHub and build as described [here](https://occlum.readthedocs.io/en/latest/build_and_install.html), or use a Docker-based Occlum image with the Occlum runtime already setup. We will go for the latter approach.
 - First, you need to [install Docker](https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository).
 - Configure Docker
 ```bash
 sudo groupadd docker
 sudo gpasswd -a $USER docker
 ```
-- Create softlinks for SGX drivers used by Occlum containers
+- If not yet installed, install the SGX driver as explained in the [primary SGX readme here](https://github.com/Yuhala/tees-for-dummies/tree/main/sgx#sgx-driver-installation). Create softlinks for SGX drivers used by Occlum containers.
 ```bash
 mkdir -p /dev/sgx
 ln -sf ../sgx_enclave /dev/sgx/enclave

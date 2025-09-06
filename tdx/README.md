@@ -10,7 +10,11 @@ The VM's memory is transparently encrypted/decrypted using multi-key Total Memor
 ```bash
 ssh -p 10022 tdx@localhost # default password is 123456
 ```
-- On the host, you can run `ip neigh show dev virbr0` to check for your VM's IP address.
+You now have a VM whose memory is protected from the hypervisor. To configure and test more advanced concepts like remote attestation, refer to [the readme from Canonical](https://github.com/canonical/tdx/blob/3.3/README.md#setup-remote-attestation).
+
+
+
+<!--On the host, you can run `ip neigh show dev virbr0` to check for your VM's IP address.-->
 
 - See [bench](./bench.md) for ideas on benchmarking.
 

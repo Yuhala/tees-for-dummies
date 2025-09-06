@@ -33,7 +33,7 @@ gramine-sgx-gen-private-key
 ## Deploying an SGX-protected program with Gramine
 Gramine programs need to be configured using a manifest file. Clone the helloworld example from the Gramine repo to have an idea of how this is done.
 ```bash
-git clone --depth 1 --branch v1.2 https://github.com/gramineproject/gramine.git && cd gramine/CI-Examples/helloworld
+git clone https://github.com/gramineproject/gramine.git && cd gramine/CI-Examples/helloworld
 ```
 You can build the Gramine application with SGX support (if you have the hardware support) or without SGX (if you do not have SGX-capable hardware) as follows.
 ```bash
@@ -45,22 +45,12 @@ gramine-sgx helloworld
 make
 gramine-direct helloworld
 ```
-
-- TODO: explain how the manifest file works
-
-
-
-
-
-
-
-
-
-
+You can now replace the content of `helloworld.c` with your own program and test. Check the [Gramine GitHub repo](https://github.com/gramineproject/gramine/tree/master/CI-Examples) to see more advanced examples of Gramine-based applications.
 
 
 
 ## Other resources
 - [Gramine official documentation](https://gramine.readthedocs.io/en/latest/)
+-
 
 [^1]: one core challenge in systems security is the constant trade-off (or "tug of war") between three factors: security, usability, and performance. Improving one often comes at the expense of the other two.

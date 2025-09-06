@@ -41,7 +41,7 @@ Most of the tutorials are Ubuntu-based. Some links may be added to redirect you 
 The tutorials assume you have TEE-enabled hardware and do not require techniques like remote attestation for hardware verification (used in production). Nevertheless, we provide information on what kind of hardware supports the TEE technology.
 
 
-## Author
-- [Peterson Yuhala](https://yuhala.github.io/) has a PhD in computer science, with a specialization in systems security with trusted execution environments. You can find his [PhD thesis here](https://yuhala.github.io/assets/pdf/thesis-peterson-yuhala.pdf).
+## Contributing
+Contributions of any kind are welcome! We will publish contributing guidelines and accept pull requests after the project gets more stable.
   
 

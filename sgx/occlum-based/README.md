@@ -1,5 +1,5 @@
 ## Deploying SGX applications using Occlum LibOS
-- Similar to Gramine, Occlum is a library OS which allows to run unmodified applications inside an SGX enclave. 
+- Similar to Gramine, [Occlum](https://github.com/occlum/occlum) is a library OS which allows to run unmodified applications inside an SGX enclave. It is also based on a [academic paper from ASPLOS'20](https://madsys.cs.tsinghua.edu.cn/publication/occlum-secure-and-efficient-multitasking-inside-a-single-enclave-of-intel-sgx/ASPLOS20-shen.pdf)
 
 ## Setup 
 - To use Occlum, we can either download its repo from GitHub and build as described [here](https://occlum.readthedocs.io/en/latest/build_and_install.html), or use a Docker-based Occlum image with the Occlum runtime already setup. We shall use the latter approach. 
@@ -41,3 +41,7 @@ occlum run /bin/occlum-hello
 docker stop $(docker ps -a -q) # stop all containers
 docker rm $(docker ps -a -q) # remove 
 ```
+
+
+## Other documentation
+- [Occlum official documentation]()

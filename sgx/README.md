@@ -3,12 +3,25 @@
 > Enclave memory is inaccessible to privileged software like the OS or hypervisor and can only be decrypted inside the CPU.
 
 ## System setup
+
+### Hardware verification
+[This GitHub page](https://github.com/ayeks/SGX-hardware) provides a list of CPUs and servers with Intel SGX support. On Linux, you can verify presence of SGX capability by building and running the [test-sgx.c]() program providing by the latter repo as follows.
+```bash
+git clone https://github.com/ayeks/SGX-hardware.git && cd SGX-hardware
+gcc -Wl,--no-as-needed -Wall -Wextra -Wpedantic -masm=intel -o test-sgx -lcap cpuid.c rdmsr.c xsave.c vdso.c test-sgx.c
+./test-sgx
+```
+You should see `...Supports SGX` in the result if your server supports SGX. If you don't have SGX support, you can still install SGX software (but no SGX driver) and run applications in SGX simulation mode.[^1]
+
+
+### SGX software installation
+
 To develop and run applications in an SGX TEE, you need to install three pieces of software
     1. The Intel SGX SDK
     2. The Intel SGX platform software (PSW)
     3. The Intel SGX driver
    
-You can either build these sofware packages from source (See [Intel SGX GitHub](https://github.com/intel/linux-sgx)) or use prebuilt binaries. Given that we are dummies, we will go for the prebuilt binaries. 
+You can either build these sofware packages from source (See [Intel SGX GitHub](https://github.com/intel/linux-sgx)) or use prebuilt binaries. Since we are dummies, we will go for the prebuilt binaries. 
 
 You can find different [software releases] of these software [here](). For the meantime, we shall focus on the links called "Intel(R) SGX Installers ..." which contain the SDK, PSW, and driver. The "DCAP Installers" are used for handling attestation which we don't need yet. For example, to download the SDK, PSW, and driver for Ubuntu 24.04, you will use [this link](https://download.01.org/intel-sgx/sgx-linux/2.26/distro/ubuntu24.04-server/)
 
@@ -47,6 +60,7 @@ sudo ./sgx_linux_x64_sdk_2.26.100.0.bin # run SDK installer
 ```
 For further instructions on how to install and setup these software components, see the [Intel SGX SW Installation Guide for Linux](https://download.01.org/intel-sgx/latest/dcap-latest/linux/docs/Intel_SGX_SW_Installation_Guide_for_Linux.pdf).
 
+- To verify that your system is ready to run SGX applications, you can download use the [sgx-detect]() tool by Fortanix.
 
 ## Testing simple SGX applications
 The SGX SDK provides sample applications in it's installation directory. If you installed the SDK in `/opt/intel`, the sample code folder should be located in `/opt/intel/sgxsdk/SampleCode`. Copy this folder to your working directory, e.g., somewhere in your home folder.
@@ -60,14 +74,38 @@ cd SampleCode/SampleEnclave
 make 
 ./app # or sudo ./app
 ```
-The result "Sample Enclave successfully returned" indicates your SGX program ran successfully.
+The result: "Sample Enclave successfully returned" indicates your SGX program ran successfully.
 
-## Tweaking the sample enclave application
-TODO: do an ecall and ocall and show that memory is encrypted by dumping enclave vs non-enclave memory and inspecting. 
+## Developing SGX applications with the SDK
+The SGX SDK requires that developers partition their applications into a `trusted part` which executes in the enclave (i.e., TEE) and an `untrusted part` which executes out of the TEE, like a regular application. Each sample application provided by the SDK is structured this way: the `App` folder contains all code for the untrusted side, while the `Enclave` folder contains all code for the trusted side. The SGX SDK provides mechanisms to context switch between both parts at run time: `ocalls` allows a thread in enclave mode to context switch out of enclave mode, e.g., to perform a system call like `read` or `write`, and `ecalls` allow a thread in non-enclave mode to context switch into enclave mode. This is illustrated in the figure below.
+
+<p align="center">
+  <img src="sgx-sdk-program.png" alt="SGX SDK code design" width="50%">
+</p>
+
+### Is SGX really securing my data?
+The `sgx-sdk-program` provides a very simple SGX application to test this. We create a secure buffer inside the enclave [my_secure_buffer](), and one outside the enclave []. We then try to access these buffers through the OS.
+
+- First build the application with `make` and run it with `./app`. 
+- TODO:
+
+## Library operating systems
+Manually partitioning code into trusted and untrusted parts following the SGX SDK design can be complex for some applications. To mitigate this problems, library OSes like [Gramine]() or [Occlum]() have been developed; they enable unmodified applications to run in SGX enclaves. See the associated subfolders for guides on how to test them.
+
+## WebAssembly in SGX
+
+
+## Other resources
+- For further information on building Intel SGX applications, consult the [Intel SGX Developer Reference for Linux]().
+- [Quarkslab's blog: Overview of Intel SGX - Part 1, SGX Internals](https://blog.quarkslab.com/overview-of-intel-sgx-part-1-sgx-internals.html)
+- [Quarkslab's blog: Overview of Intel SGX - Part 2, SGX Internals](https://blog.quarkslab.com/overview-of-intel-sgx-part-2-sgx-externals.html)
+- [Intel SGX explained by Victor Costan and Srinivas Devadas](https://eprint.iacr.org/2016/086.pdf)
+- [A list of SGX-related publications](https://github.com/vschiavoni/sgx-papers/)
+- [Awesome SGX](https://github.com/Jim8y/awesome-sgx)
 
 
 
 
-For further information on writing Intel SGX software, see the [Intel SGX Developer Reference for Linux]().
+[^1]: To run an SGX SDK application in simulation mode, change the Makefile variable `SGX_MODE` from `SGX_MODE ?= HW` to `SGX_MODE ?= SIM` (or anything different from HW).
 
-## More SGX documentation and publications
+

@@ -4,7 +4,10 @@ Arm TrustZone (TZ) is a hardware security extension in ARM-based processors that
 
 A hardware component called the **TrustZone address space controller**(TZASC) enforces the separation between the secure world and the normal world by controlling access to physical memory. Essentially, TZASC can be programmed/configured such that some parts of physical memory (contiguous blocks) are only accessible in the secure world, or both worlds. A special bit called the _non-secure_ (NS) bit, stored in the _secure configuration register_(SCR), is used to determine which world the processor is currently operating in.
 
-![Arm TrustZone architecture](./tz-arch.png)
+<!--![Arm TrustZone architecture](./tz-arch.png)-->
+<p align="center">
+  <img src="tz-arch.png" alt="Arm TrustZone architecture" width="50%">
+</p>
 
 Contrary to TEE technologies like SGX which encrypt data stored in memory, TZ only performs access control checks to ensure confidentiality. 
 
@@ -34,7 +37,7 @@ A simple analogy is OP-TEE is to TrustZone what the Intel SGX SDK is to SGX.
 
 
 ## Other platforms with good TrustZone and OP-TEE support
-1. [Nvidia Jetson AGX boards](https://docs.nvidia.com/jetson/archives/r36.2/DeveloperGuide/SD/Security/OpTee.html)
+1. [Nvidia Jetson boards](https://docs.nvidia.com/jetson/archives/r36.2/DeveloperGuide/SD/Security/OpTee.html)
 2. [All platforms mentioned here](https://optee.readthedocs.io/en/latest/general/platforms.html)
 
 

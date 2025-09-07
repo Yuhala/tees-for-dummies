@@ -13,7 +13,7 @@ Here we show how to install a Linux OS (Debian) on the VisionFive 2 and run a si
 bzip2 -dk starfive-jh7110-202409-SD-minimal-desktop-wayland.img.bz2 
 ```
 - [Install BalenaEtcher](https://etcher.balena.io/) and open it.
-- Connect a microSD card to your PC and use BalenaEtcher to flash the above image to the SD card: `Flash from file` --> `Select target card` --> `Flash!`. Once done insert the SD card into the board. 
+- Connect a microSD card to your PC and use BalenaEtcher to flash the above image to the SD card: `Flash from file` --> `Select target card`[^1] --> `Flash!`. Once done insert the SD card into the board. 
 <!--Setup the boot mode by toggling the [RGPIO buttons](https://doc-en.rvspace.org/VisionFive2/PDF/VisionFive2_QSG.pdf) (page 39) accordingly. We use the SD card in our case which corresponds to `SDIO 3.0 mode`: `RGPIO_1 = L(0)` and `RGPIO_0 = H(1)` (use a small pin to toggle the buttons).-->
 - Connect a display (e.g., HDMI), keyboard, and mouse to the board (we will configure SSH access subsequently), and power on the board.
 - Once you have the login interface, enter the default login credentials: `Username: user, Password: starfive`. Configure SSH in the terminal as follows.
@@ -62,3 +62,7 @@ Results of the scan will give you something like:
 - [Official VisionFive 2 documentation](https://doc-en.rvspace.org/VisionFive2/PDF/VisionFive2_QSG.pdf)
 - [VisionFive 2 datasheet](https://doc-en.rvspace.org/VisionFive2/PDF/VisionFive2_Datasheet.pdf)
 - [YouTube video by ExplainingComputers on the VisionFive 2](https://www.youtube.com/watch?v=ykKnc86UtXg)
+
+
+
+[^1]: The VisionFive SoC provides two-switch RGPIO header which determines which storage device will be used to load the OS image.[See RGPIO configuration here](https://doc-en.rvspace.org/VisionFive2/PDF/VisionFive2_QSG.pdf) (page 39)

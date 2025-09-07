@@ -16,10 +16,10 @@ You should see `...Supports SGX` in the result if your server supports SGX. If y
 
 ### SGX software installation
 
-To develop and run applications in an SGX TEE, you need to install three pieces of software
-    1. The Intel SGX SDK
-    2. The Intel SGX platform software (PSW)
-    3. The Intel SGX driver
+To develop and run applications in an SGX TEE, you need to install three pieces of software:
+  1. The Intel SGX SDK
+  2. The Intel SGX platform software (PSW)
+  3. The Intel SGX driver
    
 You can either build these sofware packages from source (See [Intel SGX GitHub](https://github.com/intel/linux-sgx)) or use prebuilt binaries. Since we are dummies, we will go for the prebuilt binaries. 
 

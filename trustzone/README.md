@@ -20,14 +20,23 @@ For this tutorial/guide, the board we will use is the [STM32MP157D-DK1](https://
 
 
 ### OP-TEE (Open Trusted Execution Environment)
-Even with a board with TrustZone support, one needs to get the right software tools to actually build programs that can benefit TrustZone security. This is where [OP-TEE]() comes in. It is an open source framework for building applications secured with TrustZone technology.[^1] 
-A simple analogy is OP-TEE is to TrustZone what the Intel SGX SDK is to SGX.
+Even with a board with TrustZone support, one needs to get the right software tools to actually build programs that can leverage TrustZone security in a useful way. This is where [OP-TEE](https://docs.nvidia.com/jetson/archives/r36.2/DeveloperGuide/SD/Security/OpTee.html) comes in. It is an open source framework for building applications secured with TrustZone technology.[^1] 
+A simple analogy is OP-TEE is to TrustZone what the Intel SGX SDK is to SGX. Similar to SGX, a TrustZone-based application running in OP-TEE has constitutes two parts, a _client application_ (CA) which represents the untrusted part of the program executing in normal world, and a _trusted application_ (TA) which is the trusted part executing in the secure world.
+
 > The official OP-TEE documentation defines it as : "a Trusted Execution Environment (TEE) designed as companion to a non-secure Linux kernel > running on Arm Cortex-A cores using the TrustZone technology". 
 > Personally, I think this definition could be confusing to a beginner who considers TrustZone as the "TEE" technology. Hence I refer to OP-TEE as a framework for building TZ applications. 
 
-- TODO: explain OP-TEE architecture
+As shown in the figure below, OP-TEE comprises two main components: `optee-os` which is the trusted side of the TEE (executes in the secure world), and `optee_client`, which is the untrusted side of the TEE(executes the normal world). The secure monitor bridges both components.
+1. `optee-os`: is a TEE OS executing at ARMv8 secure EL-1 level which provides generic OS-level functions like interrupt handling, thread handling, crypto services, and shared memory. It implements the [GlobalPlatform TEE Internal Core API](https://globalplatform.org/wp-content/uploads/2021/03/GPD_TEE_Internal_Core_API_Specification_v1.3.1_PublicRelease_CC.pdf), which is used to implement TAs that run in the secure world at ARMv8 secure EL-0 level.
+2. `optee-client`: consists of two parts: a normal-world user-space library and a normal-world user-space daemon. The library, `libteec.so`, implements the [GlobalPlatform TEE Client API](https://globalplatform.org/wp-content/uploads/2010/07/TEE_Client_API_Specification-V1.0.pdf), providing the interface through which normal-world CAs interact with TAs in the secure world. The daemon, TEE-supplicant, provides auxiliary functionality for the trusted OS, such as enabling file system access to load TAs from the normal-world file system into the secure world.
+
+<p align="center">
+  <img src="optee-arch.png" alt="OP-TEE architecture" width="50%">
+</p>
 
 
+## Building OP-TEE for the STM32MP157D-DK1
+See [this readme](./stm32-dk1-optee.md)
 
 ## More TrustZone documentation and publications
 1. [Demystifying Arm TrustZone: A Comprehensive Survey](https://www.dpss.inesc-id.pt/~nsantos/papers/pinto_acsur19.pdf)

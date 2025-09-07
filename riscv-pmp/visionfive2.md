@@ -9,7 +9,13 @@
   <img src="vision5-2.png" alt="VisionFive 2 board" width="50%">
 </p>
 
-## Setting up the VisionFive 2
+## Testing PMP on the VisionFive 2
+> TODO Peterson: to test PMP one will need to do some modifications to the OpenSBI firmware to configure PMP regions in M-mode before the kernel boots. THe program to be protected can then be loaded into the region via a linker script and the program's entrypoint entered in M-mode.
+
+
+
+
+## Setting up Linux on the VisionFive 2
 Here we show how to install a Linux OS (Debian) on the VisionFive 2 and run a simple application. The setup instructions are based on [this guide](https://doc-en.rvspace.org/VisionFive2/PDF/VisionFive2_QSG.pdf).
 - Download the latest Debian image from [here](https://debian.starfivetech.com/) (e.g., 202409/sd folder in this case). We choose the SD image from OneDrive. Extract the downloaded image with `bzip2`.
 ```bash
@@ -45,7 +51,7 @@ Results of the scan will give you something like:
 
 
 
-## Testing PMP on the VisionFive 2
+
 
 
 
@@ -65,7 +71,7 @@ Results of the scan will give you something like:
 - [Official VisionFive 2 documentation](https://doc-en.rvspace.org/VisionFive2/PDF/VisionFive2_QSG.pdf)
 - [VisionFive 2 datasheet](https://doc-en.rvspace.org/VisionFive2/PDF/VisionFive2_Datasheet.pdf)
 - [YouTube video by ExplainingComputers on the VisionFive 2](https://www.youtube.com/watch?v=ykKnc86UtXg)
-
+- [VisionFive hardware and software resources](https://github.com/starfive-tech/VisionFive)
 
 
 [^1]: The VisionFive SoC provides a two-switch RGPIO header which determines which storage device will be used to load the OS image.[See RGPIO configuration here](https://doc-en.rvspace.org/VisionFive2/PDF/VisionFive2_QSG.pdf) (page 39)

@@ -5,6 +5,9 @@
 >- Memory: 2,4,8 GB LPDDR4 DRAM (mine is 8GB)
 >- 40-pin GPIO header supporting I2C, I2S, PWM, UART amongst others. 
 
+<p align="center">
+  <img src="vision5-2.png" alt="VisionFive 2 board" width="50%">
+</p>
 
 ## Setting up the VisionFive 2
 Here we show how to install a Linux OS (Debian) on the VisionFive 2 and run a simple application. The setup instructions are based on [this guide](https://doc-en.rvspace.org/VisionFive2/PDF/VisionFive2_QSG.pdf).
@@ -65,4 +68,4 @@ Results of the scan will give you something like:
 
 
 
-[^1]: The VisionFive SoC provides two-switch RGPIO header which determines which storage device will be used to load the OS image.[See RGPIO configuration here](https://doc-en.rvspace.org/VisionFive2/PDF/VisionFive2_QSG.pdf) (page 39)
+[^1]: The VisionFive SoC provides a two-switch RGPIO header which determines which storage device will be used to load the OS image.[See RGPIO configuration here](https://doc-en.rvspace.org/VisionFive2/PDF/VisionFive2_QSG.pdf) (page 39)

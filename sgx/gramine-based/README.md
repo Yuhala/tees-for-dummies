@@ -1,5 +1,5 @@
 ## Gramine
-Gramine (formerly Graphene-SGX) is a library OS which allows to run unmodified applications inside an SGX enclave, as illustrated in the figure below. It is useful in scenarios where an application is either too complex to be partitioned as done with the SDK.
+Gramine (formerly Graphene-SGX) is a library OS which allows to run unmodified applications inside an SGX enclave, as illustrated in the figure below. It is useful in scenarios where an application is too complex to be partitioned as done with the SDK.
 
 <p align="center">
   <img src="gramine-sgx.png" alt="Unmodified application in Gramine" width="50%">

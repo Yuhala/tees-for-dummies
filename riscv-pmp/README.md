@@ -1,5 +1,5 @@
 ## RISC-V physical memory protection (PMP)
-> In simple terms, PMP is an ISA feature in RISC-V processors that allows one to divide the system physical memory into (contiguous) regions with specific access permissions (i.e., RWX). For example, 0x0000-0x1000: R-X, 0x1000-0x2000: RW-, 0x2000-0x2100: M-mode only, 0x2100-0xFFFF: no access. 
+> In simple terms, PMP is an ISA feature in RISC-V processors that allows one to divide the system physical memory into (contiguous) regions with specific access permissions (i.e., RWX). It is configured by the most privileged software (firmware) to create and enforce rules that prevent less privileged software (like an operating system or applications) from reading, writing, or executing code in specific memory regions. 
 
 
 ## Technical stuff on PMP

@@ -11,7 +11,7 @@ In order to protect a certain region of physical memory, we need to define the s
 
 ## Hardware setup
 We will focus on two RISC-V boards.
-1. **[VisionFive 2]((https://doc-en.rvspace.org/VisionFive2/PDF/VisionFive2_QSG.pdf))**: a RISC-V based computer from StarFive with an integrated 3D GPU, capable of running a full Linux OS. It is very similar to a Raspberry Pi. Follow steps in [this readme](./visionfive2.md) to setup this board and test PMP.
+1. **[VisionFive 2](https://doc-en.rvspace.org/VisionFive2/PDF/VisionFive2_QSG.pdf)**: a RISC-V based computer from StarFive with an integrated 3D GPU, capable of running a full Linux OS. It is very similar to a Raspberry Pi. Follow steps in [this readme](./visionfive2.md) to setup this board and test PMP.
 2. **[ESP32-C3](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c3/get-started/index.html)**: a very low cost (~20 USD) SoC that integrates WiFi, BlueTooth, multiple peripherals (I2S, I2C, UART, GPIO). Contrary to the VisionFive 2, this board. Nevertheless it provides excellent documentation to test features like PMP. Follow steps in [this readme](./esp32-c3.md) to setup and test PMP on ESP32-C3.
 
 

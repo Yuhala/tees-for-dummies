@@ -6,36 +6,13 @@
 RISC-V defines execution modes or privilege levels: machine mode (`M-mode`) is the highest privilege level and houses the firmware. M-mode has access to all memory regions and has the privilege to change machine registers. The supervisor-mode (`S-mode`) has lower privileges than the M-mode and houses the OS. Applications execute in user-mode (`U-mode`). PMP provides the possibility to isolate a user application such that its memory is inaccessible to the OS or other applications. M-mode is in charge of configuring the PMP registers and enforcing the PMP permissions.
 
 In order to protect a certain region of physical memory, we need to define the start/end address and the permissions that apply to them. RISC-V provides two types of registers control and status registers (CSRs) for PMP: `pmpaddr` for encoding the memory address (usually the end address) of a PMP regions, and `pmpcfg` for encoding the permission. Both define a PMP entry. We can have a maximum of 64 PMP entries.
+
+
+
 ## Hardware setup
-
-
-
-
-## Software setup
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+We will focus on two RISC-V boards.
+1. **[VisionFive 2]((https://doc-en.rvspace.org/VisionFive2/PDF/VisionFive2_QSG.pdf))**: a RISC-V based computer from StarFive with an integrated 3D GPU, capable of running a full Linux OS. It is very similar to a Raspberry Pi. Follow steps in [this readme](./visionfive2.md) to setup this board and test PMP.
+2. **[ESP32-C3](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c3/get-started/index.html)**: a very low cost (~20 USD) SoC that integrates WiFi, BlueTooth, multiple peripherals (I2S, I2C, UART, GPIO). Contrary to the VisionFive 2, this board. Nevertheless it provides excellent documentation to test features like PMP. Follow steps in [this readme](./esp32-c3.md) to setup and test PMP on ESP32-C3.
 
 
 

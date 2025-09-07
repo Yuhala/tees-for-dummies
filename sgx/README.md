@@ -90,10 +90,10 @@ The `sgx-sdk-program` provides a very simple SGX application to test this. We cr
 - TODO:
 
 ## Library operating systems
-Manually partitioning code into trusted and untrusted parts following the SGX SDK design can be complex for some applications. To mitigate this problems, library OSes like [Gramine]() or [Occlum]() have been developed; they enable unmodified applications to run in SGX enclaves. See the associated subfolders for guides on how to test them.
+Manually partitioning code into trusted and untrusted parts following the SGX SDK design can be complex for some applications. To mitigate this problems, library OSes like [Gramine](./gramine-based/README.md) or [Occlum](./occlum-based/README.md) have been developed; they enable unmodified applications to run in SGX enclaves. See the associated subfolders for guides on how to test them.
 
 ## WebAssembly in SGX
-
+See [this readme](./wasm-based/README.md).
 
 ## Other resources
 - For further information on building Intel SGX applications, consult the [Intel SGX Developer Reference for Linux]().

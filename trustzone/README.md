@@ -31,7 +31,7 @@ As shown in the figure below, OP-TEE comprises two main components: `optee-os` w
 2. `optee-client`: consists of two parts: a normal-world user-space library and a normal-world user-space daemon. The library, `libteec.so`, implements the [GlobalPlatform TEE Client API](https://globalplatform.org/wp-content/uploads/2010/07/TEE_Client_API_Specification-V1.0.pdf), providing the interface through which normal-world CAs interact with TAs in the secure world. The daemon, TEE-supplicant, provides auxiliary functionality for the trusted OS, such as enabling file system access to load TAs from the normal-world file system into the secure world.
 
 <p align="center">
-  <img src="optee-arch.png" alt="OP-TEE architecture" width="50%">
+  <img src="optee-arch.png" alt="OP-TEE architecture" width="75%">
 </p>
 
 

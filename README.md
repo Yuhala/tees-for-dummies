@@ -22,6 +22,7 @@ The repo provides a central base with just enough (i.e., minimal) information an
   <img src="tee-tcb.png" alt="CB variations with TEEs" width="85%">
 </p>
 <!--![TCB variations with TEEs](./tee-tcb.png)-->
+
 - TEEs can be broadly classified into two categories: 
     1. TEEs for **process-level isolation**: they enable a process to create a secure encrypted (and integrity-protected) region, usually called an _enclave_, in its address space at runtime. Memory pages in this region can only be decrypted in the CPU. Examples include Intel software guard extensions (SGX) and Arm TrustZone (does only memory access control checks, no encryption).
     2. TEEs for **virtual machine (VM)-level isolation**: they protect entire VMs rather than single programs. Examples: Intel trusted domain extensions (TDX), AMD secure encrypted virtualizatin (SEV) with secure nested paging (SNP), or Arm confidential compute architecture (CCA).

@@ -6,7 +6,7 @@
 
 From my experience, it is often difficult to find practical and concise **hands on** guides on how to use most TEE technologies. Though official documentations are nice, they usually contain too much information not very necessary for a newbie willing to do a few quick tests. Moreover, it's rare to find articles that bring all of them together.
   
-The repo provides a central base with just enough (i.e., minimal) information and easy-to-follow guides on how to setup and do simple tests with well known TEE technologies. It should not be used as a reference guide for deploying your applications in production; in such situations, the official documentations are the most complete and should be followed. This repo, as its name suggests, is a relatively easy starting point for "dummies".
+This repo provides a central base with just enough (i.e., minimal) information and easy-to-follow guides on how to setup and do simple tests with well known TEE technologies. It should not be used as a reference guide for deploying your applications in production; in such situations, the official documentations are the most complete and should be followed. This repo, as its name suggests, is a relatively easy starting point for "dummies".
 
 
 ## Background on trusted execution environments

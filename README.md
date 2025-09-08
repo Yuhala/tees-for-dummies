@@ -11,6 +11,7 @@ This repo provides a central base with just enough (i.e., minimal) information a
 
 ## Background on trusted execution environments
 > A Trusted Execution Environment (TEE) is a hardware-enforced secure execution context that enables code to be executed in isolation from the primary operating environment, such as the operating system or hypervisor.
+
 TEEs typically provide some or all of the following security guarantees:
   - **Confidentiality**: ensures the data is not accessible to unauthorized entities.
   - **Integrity**: ensures the data cannot be modified/tampered with by an unauthorized entity; all tampering can be detected.

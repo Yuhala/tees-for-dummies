@@ -13,7 +13,7 @@ In a production setting, [remote attestation](https://arxiv.org/pdf/2204.06790) 
 ## System setup
 
 ### Hardware verification
-[This GitHub page](https://github.com/ayeks/SGX-hardware) provides a list of CPUs and servers with Intel SGX support. On Linux, you can verify presence of SGX capability by building and running the [test-sgx.c]() program providing by the latter repo as follows.
+[This GitHub page](https://github.com/ayeks/SGX-hardware) provides a list of CPUs and servers with Intel SGX support. On Linux, you can verify presence of SGX capability by building and running the [test-sgx.c](https://github.com/ayeks/SGX-hardware/blob/master/test-sgx.c) program provided by the latter repo as follows.
 ```bash
 git clone https://github.com/ayeks/SGX-hardware.git && cd SGX-hardware
 gcc -Wl,--no-as-needed -Wall -Wextra -Wpedantic -masm=intel -o test-sgx -lcap cpuid.c rdmsr.c xsave.c vdso.c test-sgx.c

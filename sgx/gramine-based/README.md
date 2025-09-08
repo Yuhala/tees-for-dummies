@@ -53,4 +53,4 @@ You can now replace the content of `helloworld.c` with your own program and test
 - [Gramine official documentation](https://gramine.readthedocs.io/en/latest/)
 -
 
-[^1]: one core challenge in systems security is the constant trade-off (or "tug of war") between three factors: security, usability, and performance. Improving one often comes at the expense of the other two.
+[^1]: One core challenge in systems security is the constant trade-off (or "tug of war") between three factors: security, usability, and performance. Improving one often comes at the expense of at least one of the other two.

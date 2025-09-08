@@ -2,6 +2,15 @@
 > Intel SGX is a TEE technology which enables applications to create secure encrypted memory regions called **enclaves**. 
 > Enclave memory is inaccessible to privileged software like the OS or hypervisor and can only be decrypted inside the CPU.
 
+At boot time, the processor reserves some portion of DRAM called the _enclave page cache_ (EPC) which is encrypted with a key only known to the CPU. When an application creates an SGX enclave, part of its virtual address space (the enclave) is mapped to this encrypted DRAM region. The pages are transparently decrypted[^1] by an extension of the memory controller called the _memory encryption engine_ (MEE) when they are copied into CPU cache lines. The page tables are still managed by the OS, but the latter cannot access any page in enclave memory. The CPU also performs access control checks to ensure one enclave doesn't access the memory of another enclave. 
+
+<figure align="center">
+  <img src="sgx-vas.png" alt="SGX memory design" width="50%">
+  <figcaption>Intel SGX memory architecture.</figcaption>
+</figure>
+
+In a production setting, [remote attestation](https://arxiv.org/pdf/2204.06790) is used to authenticate the hardware (i.e., it supports SGX) and ensure enclave code has not been tampered with.
+
 ## System setup
 
 ### Hardware verification
@@ -11,7 +20,7 @@ git clone https://github.com/ayeks/SGX-hardware.git && cd SGX-hardware
 gcc -Wl,--no-as-needed -Wall -Wextra -Wpedantic -masm=intel -o test-sgx -lcap cpuid.c rdmsr.c xsave.c vdso.c test-sgx.c
 ./test-sgx
 ```
-You should see `...Supports SGX` in the result if your server supports SGX. If you don't have SGX support, you can still install SGX software (but no SGX driver) and run applications in SGX simulation mode.[^1]
+You should see `...Supports SGX` in the result if your server supports SGX. If you don't have SGX support, you can still install SGX software (but no SGX driver) and run applications in SGX simulation mode.[^2]
 
 
 ### SGX software installation
@@ -60,7 +69,7 @@ sudo ./sgx_linux_x64_sdk_2.26.100.0.bin # run SDK installer
 ```
 For further instructions on how to install and setup these software components, see the [Intel SGX SW Installation Guide for Linux](https://download.01.org/intel-sgx/latest/dcap-latest/linux/docs/Intel_SGX_SW_Installation_Guide_for_Linux.pdf).
 
-- To verify that your system is ready to run SGX applications, you can download use the [sgx-detect]() tool by Fortanix.
+- To verify that your system is ready to run SGX applications, you can download use the [sgx-detect]() tool by Fortanix. (TODO: complete)
 
 ## Testing simple SGX applications
 The SGX SDK provides sample applications in it's installation directory. If you installed the SDK in `/opt/intel`, the sample code folder should be located in `/opt/intel/sgxsdk/SampleCode`. Copy this folder to your working directory, e.g., somewhere in your home folder.
@@ -82,6 +91,7 @@ The SGX SDK requires that developers partition their applications into a `truste
 <p align="center">
   <img src="sgx-sdk-program.png" alt="SGX SDK code design" width="50%">
 </p>
+
 
 ### Is SGX really securing my data?
 The `sgx-sdk-program` provides a very simple SGX application to test this. We create a secure buffer inside the enclave [my_secure_buffer](), and one outside the enclave []. We then try to access these buffers through the OS.
@@ -105,7 +115,7 @@ See [this readme](./wasm-based/README.md).
 
 
 
-
-[^1]: To run an SGX SDK application in simulation mode, change the Makefile variable `SGX_MODE` from `SGX_MODE ?= HW` to `SGX_MODE ?= SIM` (or anything different from HW).
+[^1]: The initial SGX implementation also performed memory integrity checks using a Merkle tree; this (indirectly) put a constraint on total EPC memory which was usually in the order of 256MB. Recent versions of SGX (SGX Scalable) have removed this Merkle tree-based integrity verification, sacrificing some security guarantees to support larger EPC sizes (e.g., 64GB) and improved performance.
+[^2]: To run an SGX SDK application in simulation mode, change the Makefile variable `SGX_MODE` from `SGX_MODE ?= HW` to `SGX_MODE ?= SIM` (or anything different from HW).
 
 

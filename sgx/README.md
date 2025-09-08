@@ -4,10 +4,9 @@
 
 At boot time, the processor reserves some portion of DRAM called the _enclave page cache_ (EPC) which is encrypted with a key only known to the CPU. When an application creates an SGX enclave, part of its virtual address space (the enclave) is mapped to this encrypted DRAM region. The pages are transparently decrypted[^1] by an extension of the memory controller called the _memory encryption engine_ (MEE) when they are copied into CPU cache lines. The page tables are still managed by the OS, but the latter cannot access any page in enclave memory. The CPU also performs access control checks to ensure one enclave doesn't access the memory of another enclave. 
 
-<figure align="center">
+<p align="center">
   <img src="sgx-vas.png" alt="SGX memory design" width="50%">
-  <figcaption>Intel SGX memory architecture.</figcaption>
-</figure>
+</p>
 
 In a production setting, [remote attestation](https://arxiv.org/pdf/2204.06790) is used to authenticate the hardware (i.e., it supports SGX) and ensure enclave code has not been tampered with.
 

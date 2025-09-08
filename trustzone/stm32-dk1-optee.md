@@ -34,23 +34,85 @@ When the build completes, it generates an image file `sdcard.img` in the `../out
 sudo dd if=../out/bin/sdcard.img of=/dev/sdX conv=fdatasync status=progress
 sudo sgdisk -e /dev/sdX
 ```
-7. **Boot the board**: Insert the SD-card into the board and power it on.
-- TODO: explain how to use the USB micro cable to access serial terminal.
+Once the copy is complete, insert the SD-card into the board.
+7. **Acess the serial console and boot the board**: Now, we will try to access a serial console, which uses a UART port to communicate with other devices (e.g., your PC). On the STM32MP157D-DK1, this serial console is mapped to UART4 by default. UART4 is connectdd to the ST-LINK debugger chip on the development board, and handles serial-to-USB translation. Connect a USB micro cable from your PC to the `ST-LINK CN11` port and enter the following command
 
 ```bash
-dmesg | tail # example result is /dev/ttyACM0
+dmesg | tail
+```
+My result is something like:
+```bash
+[7887692.120663] usb 1-2: Product: STM32 STLink
+[7887692.120669] usb 1-2: Manufacturer: STMicroelectronics
+[7887692.120675] usb 1-2: SerialNumber: 0670FF485570854967105845
+[7887692.148311] audit: type=1400 audit(1757366322.272:21348): apparmor="DENIED" operation="open" class="file" profile="snap.spotify.spotify" name="/sys/devices/pci0000:00/0000:00:14.0/usb1/1-2/descriptors" pid=2512520 comm="ThreadPoolForeg" requested_mask="r" denied_mask="r" fsuid=1000 ouid=0
+[7887692.172919] cdc_acm 1-2:1.1: ttyACM0: USB ACM device
+[7887692.172966] usbcore: registered new interface driver cdc_acm
+```
+The `ttyACM0` text indicates that the ST-LINK is located at `/dev/ttyACM0`. We will access the serial console through this device to view logs from our board.
+
+```bash
 sudo apt install -y picocom
 sudo usermod -a -G dialout $USER
 
 # Enter the following in a new terminal
 picocom -b 115200 /dev/ttyACM0
 ```
-After entering the last command above, power the board. You should see the boot process and a login prompt. 
+After entering the last command above, power the board. You should see the boot process and a login prompt. I have something like:
+```bash
+...
+[    3.033417] hub 1-0:1.0: 1 port detected
+[    3.045219] ehci-platform 5800d000.usb: EHCI Host Controller
+[    3.049526] ehci-platform 5800d000.usb: new USB bus registered, assigned bus number 2
+[    3.059427] ehci-platform 5800d000.usb: irq 69, io mem 0x5800d000
+[    3.080933] ehci-platform 5800d000.usb: USB 2.0 started, EHCI 1.00
+[    3.087154] hub 2-0:1.0: USB hub found
+[    3.089597] hub 2-0:1.0: 2 ports detected
+[    3.106146] EXT4-fs (mmcblk0p5): mounting ext2 file system using the ext4 subsystem
+[    3.118927] EXT4-fs (mmcblk0p5): warning: mounting unchecked fs, running e2fsck is recommended
+[    3.129533] EXT4-fs (mmcblk0p5): mounted filesystem fb8ce85a-0558-4528-a5cb-8873aa3885b8 r/w without journal. Quota mode: disabled.
+[    3.140264] VFS: Mounted root (ext2 filesystem) on device 179:5.
+[    3.149824] devtmpfs: mounted
+[    3.155829] Freeing unused kernel image (initmem) memory: 2048K
+[    3.161056] Run /sbin/init as init process
+[    3.345598] EXT4-fs (mmcblk0p5): re-mounted fb8ce85a-0558-4528-a5cb-8873aa3885b8 r/w. Quota mode: disabled.
+[    3.361067] usb 2-1: new high-speed USB device number 2 using ehci-platform
+Seeding 256 bits and crediting
+Saving 256 bits of creditable seed for next boot
+Starting syslogd: OK
+Starting klogd: OK
+[    3.533856] hub 2-1:1.0: USB hub found
+Running sysctl: [    3.539363] hub 2-1:1.0: 4 ports detected
+OK
+Starting watchdog...
+Set permissions on /dev/tee*: chown: /dev/teepriv0: No such file or directory
+FAIL
+Starting network: OK
+Starting crond: OK
 
+OP-TEE embedded distrib for stm32mp1-157A_DK1
+buildroot login: 
+```
+This login promp is good news!! It means our OP-TEE build and Linux Kernel are running successfully. Enter `root` in the login prompt and press `Enter`. If you enter `cd /`, you can see the minimal Linux userland. Now we can test OP-TEE.
 
-## Testing a Trusted Application (TA) secured with TrustZone
-- TODO
+## Testing OP-TEE
+In Buildroot, OP-TEE consists of: `TEE supplicant` running in normal world, `libteec.so` (client library), and `xtest` (test TAs). Confirm these are present with:
+```bash
+which tee-supplicant # my result: /usr/sbin/tee-supplicant
+which xtest # my result: /usr/bin/xtest
+```
+Start the supllicant daemon
+```bash
+tee-supplicant &
+```
+Run the [OP-TEE xtest](https://optee.readthedocs.io/en/latest/building/gits/optee_test.html), a TEE sanity tests suite for OP-TEE on Arm TrustZone. 
+```bash
+xtest
+```
+- A successful `xtest` run means you are ready to build your own OP-TEE trusted applications!
 
+## Building a simple trusted application with OP-TEE
+- TODO: find useful example online and include here.
 
 
 

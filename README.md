@@ -39,7 +39,7 @@ There is a folder corresponding to each TEE technology, and each folder contains
 5. [RISC-V PMP](riscv-pmp/README.md): how to setup and use RISC-V's physical memory protection. 
 
 
-All the tutorials a Linux-based (mostly Ubuntu). Some links may be added to redirect you to the main website if you use a different OS. Also, if the main TEE website provides a "simple enough" guide, we will just redirect you there. Otherwise, we will do our best to simplify.
+All the tutorials are Linux-based (mostly Ubuntu). Some links may be added to redirect you to the main website if you use a different OS. Also, if the main TEE website provides a "simple enough" guide, we will just redirect you there. Otherwise, we will do our best to simplify.
 
 The tutorials assume you have TEE-enabled hardware and do not require techniques like remote attestation for hardware verification (used in production). Nevertheless, we provide information on what kind of hardware supports the TEE technology.
 

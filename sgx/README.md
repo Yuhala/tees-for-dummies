@@ -8,7 +8,7 @@ At boot time, the processor reserves some portion of DRAM called the _enclave pa
   <img src="sgx-vas.png" alt="SGX memory design" width="50%">
 </p>
 
-In a production setting, [remote attestation](https://arxiv.org/pdf/2204.06790) is used to authenticate the hardware (i.e., it supports SGX) and ensure enclave code has not been tampered with.
+In a production setting, [remote attestation](https://arxiv.org/pdf/2204.06790) is used to authenticate the hardware (i.e., verify it actually supports SGX) and ensure enclave code has not been tampered with.
 
 ## System setup
 

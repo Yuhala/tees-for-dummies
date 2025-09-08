@@ -32,11 +32,11 @@ Essentially, the difference between both categories is the degree of isolation t
 
 # Repository structure
 There is a folder corresponding to each TEE technology, and each folder contains a Readme file explaining how to setup and test the TEE technology.
-1. [Intel SGX](sgx/README.md): deploys SGX applications using the [Intel SGX SDK](sgx/README.md), [Gramine LibOS](sgx/gramine-based/README.md), [Occlum LibOS](sgx/occlum-based/README.md), and a [WebAssembly Runtime]().
-2. [Arm TrustZone](trustzone/README.md): deploys applications protected with Arm TrustZone (Cortex-A), using OP-TEE.
+1. [Intel SGX](sgx/README.md): deploys SGX applications using the [Intel SGX SDK](sgx/README.md), [Gramine LibOS](sgx/gramine-based/README.md), [Occlum LibOS](sgx/occlum-based/README.md), and a [WebAssembly Runtime](sgx/wasm-based/README.md).
+2. [Arm TrustZone](trustzone/README.md): deploys applications protected with Arm TrustZone (Cortex-A), using [OP-TEE](https://docs.nvidia.com/jetson/archives/r36.2/DeveloperGuide/SD/Security/OpTee.html).
 3. [Intel TDX](tdx/README.md): builds TDX-capable confidential VMs.
 4. [AMD SEV-SNP](sev-snp/README.md): builds SEV-capable confidential VMs.
-5. [RISC-V PMP](): deploys applications protected with RISC-V's physical memory protection based on KeyStone framework. 
+5. [RISC-V PMP](riscv-pmp/README.md): how to setup and use RISC-V's physical memory protection. 
 
 
 All the tutorials a Linux-based (mostly Ubuntu). Some links may be added to redirect you to the main website if you use a different OS. Also, if the main TEE website provides a "simple enough" guide, we will just redirect you there. Otherwise, we will do our best to simplify.

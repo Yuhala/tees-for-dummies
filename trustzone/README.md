@@ -46,6 +46,7 @@ See [this readme](./stm32-dk1-optee.md)
 2. [TrustZone Explained: Architectural Features and Use Cases](https://www.researchgate.net/profile/Bernard-Ngabonziza-2/publication/312182612_TrustZone_Explained_Architectural_Features_and_Use_Cases/links/59f26a8a0f7e9beabfcc636b/TrustZone-Explained-Architectural-Features-and-Use-Cases.pdf)
 3. [Nice article on Arm TrustZone and OP-TEE](https://www.linkedin.com/pulse/arm-trustzone-unlocking-secure-world-embedded-systems-khaled-el-sayed-a3hpf/)
 4. [OP-TEE on Nvidia Jetson](https://docs.nvidia.com/jetson/archives/r36.2/DeveloperGuide/SD/Security/OpTee.html)
+4. [STM32 MPU OP-TEE concepts overview](https://wiki.st.com/stm32mpu/wiki/OP-TEE_concepts_overview)
 
 
 ## Other platforms with good TrustZone and OP-TEE support

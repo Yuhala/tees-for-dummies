@@ -11,8 +11,7 @@ As promised, the OP-TEE documentation provides instructions on [setting up OP-TE
 ```
 3. **Get OP-TEE for STM32MP1**: Check [the Manifest XML file](https://optee.readthedocs.io/en/latest/building/gits/build.html#current-version) corresponding to the board. This manifest sets up the necessary software components for running OP-TEE on the given board/device. Ours is `stm32mp1.xml`.
 ```bash
-mkdir -p optee-stm32mp1
-cd optee-stm32mp1
+mkdir -p optee-stm32mp1 & cd optee-stm32mp1
 repo init -u https://github.com/OP-TEE/manifest.git -m stm32mp1.xml 
 repo sync 
 ```
@@ -22,8 +21,10 @@ cd optee-stm32mp1/build
 make -j2 toolchains
 ```
 5. **Build the solution**: This is the core compilation step where all the downloaded source code components (OP-TEE OS, Linux kernel, Trusted Firmware-A, U-Boot, xtest, the root filesystem, etc.) are compiled together to create a complete, bootable software stack for your chosen platform. 
+<!-->> When following the official documentation, for our chosen board, the platform used in the build should be `PLATFORM=stm32mp1-157A_DK1`. However, after building and testing on the board, I had issues starting tee-supplicant and missing `/dev/tee`. After reading some GitHub issues on a similar subject, this problem can be avoided by simply not specifying the `PLATFORM` in the make instruction, which we do below.-->
+> Below build command is being debugged as there is an issue with OP-TEE after booting into the built kernel. So, as of now, this README is incomplete.
 ```bash
-make -j `nproc` PLATFORM=stm32mp1-157A_DK1 all
+make -j `nproc` PLATFORM=stm32mp1-157A_DK1 all 
 ```
 This step takes some time. If you encounter build issues, you can pipe the build to a log file and check for errors. In this case, you should also avoid the `-j` flag for multi-threaded build so the log results are understandable. 
 
@@ -120,8 +121,45 @@ xtest
 
 
 
+## Troubleshooting
+TODO: open github issue
+```bash
+[    3.029464] EXT4-fs (mmcblk0p5): mounted filesystem fe84d2f8-15f8-46e1-a08b-537e57ab1f2e r/w without journal. Quota mode: disabled.
+[    3.040128] VFS: Mounted root (ext2 filesystem) on device 179:5.
+[    3.049887] devtmpfs: mounted
+[    3.055790] Freeing unused kernel image (initmem) memory: 2048K
+[    3.061049] Run /sbin/init as init process
+[    3.244771] EXT4-fs (mmcblk0p5): re-mounted fe84d2f8-15f8-46e1-a08b-537e57ab1f2e r/w. Quota mode: disabled.
+[    3.269947] usb 2-1: new high-speed USB device number 2 using ehci-platform
+Saving 256 bits of creditable seed for next boot
+Starting syslogd: OK
+Starting klogd: OK
+Running sysctl: [    3.443736] hub 2-1:1.0: USB hub found
+[    3.449522] hub 2-1:1.0: 4 ports detected
+OK
+Starting watchdog...
+Set permissions on /dev/tee*: chown: /dev/teepriv0: No such file or directory
+FAIL
+Starting network: OK
+Starting crond: OK
 
+OP-TEE embedded distrib for stm32mp1-157A_DK1
+buildroot login: root
+# [   33.129868] vdda: disabling
+which tee-supplicant
+/usr/sbin/tee-supplicant
+# tee-supplicant &
+# ERR [127] TSUP:main:922: failed to find an OP-TEE supplicant device
+xtest
+Run test suite with level=0
 
+TEE test application started over default TEE instance
+Failed to open TEE context: 0xffff0008
+[1]+  Done(1)                    tee-supplicant
+# 
+
+```
+see: https://github.com/OP-TEE/optee_os/issues/4424
 
 
 
@@ -134,3 +172,7 @@ xtest
 - [Intro to Embedded Linux](https://www.digikey.ch/en/maker/projects/intro-to-embedded-linux-part-1-buildroot/a73a56de62444610a2187cd9e681c3f2)
 - [Building OP-TEE for STM32MP1 boards](https://optee.readthedocs.io/en/latest/building/devices/stm32mp1.html)
 - [STM32MP157D-DK1 databrief](https://www.st.com/resource/en/data_brief/stm32mp157d-dk1.pdf)
+- [STM32MP157x-DKx - hardware description](https://wiki.st.com/stm32mpu/wiki/STM32MP157x-DKx_-_hardware_description)
+- [STMicroelectronics software forum](https://community.st.com/t5/stm32-mpus-embedded-software-and/bd-p/mpu-embedded-software-forum)
+- [STM32 MPU: How to develop an OP-TEE Trusted Application](https://wiki.st.com/stm32mpu/wiki/How_to_develop_an_OP-TEE_Trusted_Application)
+- [STM32 MPU OP-TEE overview](https://wiki.st.com/stm32mpu/wiki/STM32_MPU_OP-TEE_overview)

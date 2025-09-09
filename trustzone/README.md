@@ -35,6 +35,9 @@ As shown in the figure below, OP-TEE comprises two main components: `optee-os` w
 </p>
 
 
+### Chain of trust
+In Arm TrustZone and OP-TEE, a [_chain of trust_](https://developer.arm.com/documentation/102418/0102/Software-architecture/Boot-and-the-chain-of-trust) ensures that each stage of boot is authenticated. It starts from the BootROM, which represents _root of trust_ (RoT) or anchor for the chain of trust. This RoT then authenticates the first-stage bootloader, which in turn authenticates the second-stage bootloader, and so on.  Processes like secuer boot define and implement this chain of trust. See [more details here](https://docs.nvidia.com/drive/drive_os_5.1.6.1L/nvvib_docs/index.html#page/DRIVE_OS_Linux_SDK_Development_Guide/Windows%20Systems/security_concepts.html#wwpID0E04S0HA).
+
 ## Building OP-TEE for the STM32MP157D-DK1
 See [this readme](./stm32-dk1-optee.md)
 

@@ -38,7 +38,7 @@ The command `sgdisk -e /dev/sdX` converts the partition table on the device `/de
 
 Once the copy is complete, insert the SD-card into the board.
 
-7. **Acess the serial console and boot the board**: Now, we will try to access a serial console, which uses a UART port to communicate with other devices (e.g., your PC). On the STM32MP157D-DK1, this serial console is mapped to UART4 by default. UART4 is connectdd to the ST-LINK debugger chip on the development board, and handles serial-to-USB translation. Connect a USB micro cable from your PC to the `ST-LINK CN11` port and enter the following command
+7. **Acess the serial console and boot the board**: Now, we will try to access a serial console, which uses a UART port to communicate with other devices (e.g., your PC). On the STM32MP157D-DK1, this serial console is mapped to UART4 by default. UART4 is connected to the ST-LINK debugger chip on the development board, and handles serial-to-USB translation. Connect a USB micro cable from your PC to the `ST-LINK CN11` port and enter the following command
 
 ```bash
 dmesg | tail
@@ -96,7 +96,7 @@ Starting crond: OK
 OP-TEE embedded distrib for stm32mp1-157A_DK1
 buildroot login: 
 ```
-This login promp is good news!! It means our OP-TEE build and Linux Kernel are running successfully. Enter `root` in the login prompt and press `Enter`. If you enter `cd /`, you can see the minimal Linux userland. Now we can test OP-TEE.
+This login prompt is good news!! It means our OP-TEE build and Linux Kernel are running successfully. Enter `root` in the login prompt and press `Enter`. If you enter `cd /`, you can see the minimal Linux userland. Now we can test OP-TEE.
 
 ## Testing OP-TEE
 In Buildroot, OP-TEE consists of: `TEE supplicant` running in normal world, `libteec.so` (client library), and `xtest` (test TAs). Confirm these are present with:

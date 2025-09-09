@@ -29,13 +29,16 @@ This step takes some time. If you encounter build issues, you can pipe the build
 
 When the build completes, it generates an image file `sdcard.img` in the `../out/bin/` from build root path. The image is a GPT multipartition image you can copy to the target SD-card.
 
-6. **Flash the device**: Now we flash the device with the built image. Insert the SD-card into your work PC and search for its path with `lsblk`; flash the device with the command below. The command `sgdisk -e /dev/sdX` converts the partition table on the device `/dev/sdX` from MBR (Master Boot Record) format to GPT (GUID Partition Table) format, while attempting to preserve the existing partition data.
+1. **Copy image to SD card**: Insert the SD-card into your work PC and search for its path with `lsblk`; copy the generated `sdcard.img` to the card using the commands below. 
 ```bash
 sudo dd if=../out/bin/sdcard.img of=/dev/sdX conv=fdatasync status=progress
 sudo sgdisk -e /dev/sdX
 ```
+The command `sgdisk -e /dev/sdX` converts the partition table on the device `/dev/sdX` from MBR (Master Boot Record) format to GPT (GUID Partition Table) format, while attempting to preserve the existing partition data. 
+
 Once the copy is complete, insert the SD-card into the board.
-7. **Acess the serial console and boot the board**: Now, we will try to access a serial console, which uses a UART port to communicate with other devices (e.g., your PC). On the STM32MP157D-DK1, this serial console is mapped to UART4 by default. UART4 is connectdd to the ST-LINK debugger chip on the development board, and handles serial-to-USB translation. Connect a USB micro cable from your PC to the `ST-LINK CN11` port and enter the following command
+
+1. **Acess the serial console and boot the board**: Now, we will try to access a serial console, which uses a UART port to communicate with other devices (e.g., your PC). On the STM32MP157D-DK1, this serial console is mapped to UART4 by default. UART4 is connectdd to the ST-LINK debugger chip on the development board, and handles serial-to-USB translation. Connect a USB micro cable from your PC to the `ST-LINK CN11` port and enter the following command
 
 ```bash
 dmesg | tail

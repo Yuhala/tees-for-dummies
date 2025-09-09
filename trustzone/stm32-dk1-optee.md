@@ -21,7 +21,7 @@ cd optee-stm32mp1/build
 make -j2 toolchains
 ```
 5. **Build the solution**: This is the core compilation step where all the downloaded source code components (OP-TEE OS, Linux kernel, Trusted Firmware-A, U-Boot, xtest, the root filesystem, etc.) are compiled together to create a complete, bootable software stack for your chosen platform. 
-<!-->> When following the official documentation, for our chosen board, the platform used in the build should be `PLATFORM=stm32mp1-157A_DK1`. However, after building and testing on the board, I had issues starting tee-supplicant and missing `/dev/tee`. After reading some GitHub issues on a similar subject, this problem can be avoided by simply not specifying the `PLATFORM` in the make instruction, which we do below.-->
+<!-- When following the official documentation, for our chosen board, the platform used in the build should be `PLATFORM=stm32mp1-157A_DK1`. However, after building and testing on the board, I had issues starting tee-supplicant and missing `/dev/tee`. After reading some GitHub issues on a similar subject, this problem can be avoided by simply not specifying the `PLATFORM` in the make instruction, which we do below.-->
 > Below build command is being debugged as there is an issue with OP-TEE after booting into the built kernel. So, as of now, this README is incomplete.
 ```bash
 make -j `nproc` PLATFORM=stm32mp1-157A_DK1 all 

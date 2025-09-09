@@ -23,7 +23,7 @@ For this tutorial/guide, the board we will use is the [STM32MP157D-DK1](https://
 Even with a board that supports TrustZone, one still needs the right software tools to build programs that can leverage TrustZone's security features in a useful way. This is where [OP-TEE](https://docs.nvidia.com/jetson/archives/r36.2/DeveloperGuide/SD/Security/OpTee.html) comes in. It is an open source framework for building applications secured with TrustZone technology.[^1] 
 A simple analogy is that OP-TEE is to TrustZone what the Intel SGX SDK is to SGX. Similar to SGX, a TrustZone-based application running in OP-TEE constitutes two parts: a _client application_ (CA) which represents the untrusted part of the program executing in normal world, and a _trusted application_ (TA) which is the trusted part executing in the secure world.
 
-> The official OP-TEE documentation defines it as : "a Trusted Execution Environment (TEE) designed as companion to a non-secure Linux kernel > running on Arm Cortex-A cores using the TrustZone technology". 
+> The official OP-TEE documentation defines it as : "a Trusted Execution Environment (TEE) designed as companion to a non-secure Linux kernel running on Arm Cortex-A cores using the TrustZone technology". 
 > Personally, I think this definition could be confusing to a beginner who considers TrustZone as the "TEE" technology. Hence I refer to OP-TEE as a framework for building TZ applications. 
 
 As shown in the figure below, OP-TEE comprises two main components: `optee-os` which is the trusted side of the TEE (executes in the secure world), and `optee_client`, which is the untrusted side of the TEE (executes the normal world). The secure monitor bridges both components.

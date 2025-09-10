@@ -122,49 +122,11 @@ xtest
 
 
 ## Troubleshooting
-TODO: open github issue
-```bash
-[    3.029464] EXT4-fs (mmcblk0p5): mounted filesystem fe84d2f8-15f8-46e1-a08b-537e57ab1f2e r/w without journal. Quota mode: disabled.
-[    3.040128] VFS: Mounted root (ext2 filesystem) on device 179:5.
-[    3.049887] devtmpfs: mounted
-[    3.055790] Freeing unused kernel image (initmem) memory: 2048K
-[    3.061049] Run /sbin/init as init process
-[    3.244771] EXT4-fs (mmcblk0p5): re-mounted fe84d2f8-15f8-46e1-a08b-537e57ab1f2e r/w. Quota mode: disabled.
-[    3.269947] usb 2-1: new high-speed USB device number 2 using ehci-platform
-Saving 256 bits of creditable seed for next boot
-Starting syslogd: OK
-Starting klogd: OK
-Running sysctl: [    3.443736] hub 2-1:1.0: USB hub found
-[    3.449522] hub 2-1:1.0: 4 ports detected
-OK
-Starting watchdog...
-Set permissions on /dev/tee*: chown: /dev/teepriv0: No such file or directory
-FAIL
-Starting network: OK
-Starting crond: OK
-
-OP-TEE embedded distrib for stm32mp1-157A_DK1
-buildroot login: root
-# [   33.129868] vdda: disabling
-which tee-supplicant
-/usr/sbin/tee-supplicant
-# tee-supplicant &
-# ERR [127] TSUP:main:922: failed to find an OP-TEE supplicant device
-xtest
-Run test suite with level=0
-
-TEE test application started over default TEE instance
-Failed to open TEE context: 0xffff0008
-[1]+  Done(1)                    tee-supplicant
-# 
-
-```
-see: https://github.com/OP-TEE/optee_os/issues/4424
-
-
-
-
-
+> The [OP-TEE Git repo]() has a list of open and closed issues which may help you.
+- I opened a GitHub issue [here](https://github.com/OP-TEE/optee_os/issues/7521) on some issues I came across while testing OP-TEE on this board. The next article provides tips that solved my issue.
+- [STM32 MPU OP-TEE configuration switches.](https://wiki.st.com/stm32mpu/wiki/OP-TEE_configuration_switches)
+- [STM32 MPU How to build OP-TEE components](https://wiki.st.com/stm32mpu/wiki/How_to_build_OP-TEE_components)
+  
 
 
 
@@ -175,4 +137,9 @@ see: https://github.com/OP-TEE/optee_os/issues/4424
 - [STM32MP157x-DKx - hardware description](https://wiki.st.com/stm32mpu/wiki/STM32MP157x-DKx_-_hardware_description)
 - [STMicroelectronics software forum](https://community.st.com/t5/stm32-mpus-embedded-software-and/bd-p/mpu-embedded-software-forum)
 - [STM32 MPU: How to develop an OP-TEE Trusted Application](https://wiki.st.com/stm32mpu/wiki/How_to_develop_an_OP-TEE_Trusted_Application)
-- [STM32 MPU OP-TEE overview](https://wiki.st.com/stm32mpu/wiki/STM32_MPU_OP-TEE_overview)
+- [STM32 MPU: OP-TEE overview](https://wiki.st.com/stm32mpu/wiki/STM32_MPU_OP-TEE_overview)
+- [STM32 MPU: How to configure OP-TEE](https://wiki.st.com/stm32mpu/wiki/How_to_configure_OP-TEE)
+- [STM32 MPU: OP-TEE configuration switches.](https://wiki.st.com/stm32mpu/wiki/OP-TEE_configuration_switches)
+- [STM32 MPU: How to build OP-TEE components](https://wiki.st.com/stm32mpu/wiki/How_to_build_OP-TEE_components)
+  
+

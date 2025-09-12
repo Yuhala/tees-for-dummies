@@ -35,9 +35,10 @@ Essentially, the difference between both categories is the degree of isolation t
 There is a folder corresponding to each TEE technology, and each folder contains a Readme file explaining how to setup and test the TEE technology.
 1. [Intel SGX](sgx/README.md): deploying SGX applications using the [Intel SGX SDK](sgx/README.md), [Gramine LibOS](sgx/gramine-based/README.md), [Occlum LibOS](sgx/occlum-based/README.md), and a [WebAssembly Runtime](sgx/wasm-based/README.md).
 2. [Arm TrustZone](trustzone/README.md): deploying applications protected with Arm TrustZone (Cortex-A), using [OP-TEE](https://docs.nvidia.com/jetson/archives/r36.2/DeveloperGuide/SD/Security/OpTee.html).
-3. [Intel TDX](tdx/README.md): building TDX-capable confidential VMs.
-4. [AMD SEV-SNP](sev-snp/README.md): building SEV-capable confidential VMs.
-5. [RISC-V PMP](riscv-pmp/README.md): setting up and testing RISC-V's physical memory protection. 
+3. [Arm CCA](cca/README.md): creating confidential virtual machines or Realms on Arm-based systems.
+4. [Intel TDX](tdx/README.md): building TDX-capable confidential VMs.
+5. [AMD SEV-SNP](sev-snp/README.md): building SEV-capable confidential VMs.
+6. [RISC-V PMP](riscv-pmp/README.md): setting up and testing RISC-V's physical memory protection. 
 
 
 All the tutorials are Linux-based (mostly Ubuntu). Some links may be added to redirect you to the main website if you use a different OS. Also, if the main TEE website provides a "simple enough" guide, we will just redirect you there. Otherwise, we will do our best to simplify.

@@ -1,6 +1,6 @@
 ## Arm confidential compute architecture (CCA)
 > Arm CCA is an Arm based TEE technology that enables the creation of confidential virtual machines called _Realms_, whose memory is inaccessible to privileged software like the hypervisor or host OS. 
-> Arm CCA is based on an extension to the Arm A-profile architecture (v9.2) called _Arm Realm Management Extension_ (RME) which provides the hardware primitives for implementing Arm CCA. 
+> Arm CCA is based on an extension to the Arm A-profile architecture (v9.2) called _Arm Realm Management Extension_ (RME) which provides the actual hardware primitives for implementing Arm CCA. 
 
 ## Arm CCA architecture
 As shown in the figure below, CCA introduces _Realm world_, a new physical address space for Realms, separate from existing _non-secure_ (NS)/normal world (See [Arm TrustZone](../trustzone/README.md)) used for running untrusted software stacks. A _realm management monitor_ (RMM) runs in Realm world at the higher privilege level that Realm VMs; it provides the host OS services allowing it to create, populate, execute, and destroy Realms, through a _Realm Management Interface_(RMI). Each RMI command are implemented as a secure monitor calls (SMC), which traps to EL3 monitor, which in turn switches execution to RMM in Realm world to handle the command. Upon completion of the RMI command, RMM issues an SMC to ELM3M, which then switches execution back to the hypervisor in Normal world.

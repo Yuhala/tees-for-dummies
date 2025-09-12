@@ -52,6 +52,7 @@ See [this readme](./stm32-dk1-optee.md)
 ## Other platforms with good TrustZone and OP-TEE support
 1. [Nvidia Jetson boards](https://docs.nvidia.com/jetson/archives/r36.2/DeveloperGuide/SD/Security/OpTee.html)
 2. [All platforms mentioned here](https://optee.readthedocs.io/en/latest/general/platforms.html)
+3. [OP-TEE: Trusted Execution Environments on i.MX Processors](https://timesys.com/webinars/Secure-by-Design-NXP-Webinar-Series-OP-TEE.pdf)
 
 
 

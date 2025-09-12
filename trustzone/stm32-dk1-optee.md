@@ -141,5 +141,8 @@ xtest
 - [STM32 MPU: How to configure OP-TEE](https://wiki.st.com/stm32mpu/wiki/How_to_configure_OP-TEE)
 - [STM32 MPU: OP-TEE configuration switches.](https://wiki.st.com/stm32mpu/wiki/OP-TEE_configuration_switches)
 - [STM32 MPU: How to build OP-TEE components](https://wiki.st.com/stm32mpu/wiki/How_to_build_OP-TEE_components)
-  
+- [Using Buildroot to create custom Linux system images](https://malware.news/t/using-buildroot-to-create-custom-linux-system-images/20611)
 
+```bash
+make ARCH= CROSS_COMPILE=arm-linux-gnueabihf- make ARCH=arm
+```

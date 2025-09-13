@@ -77,11 +77,7 @@ In Buildroot, OP-TEE consists of: `TEE supplicant` running in normal world, `lib
 which tee-supplicant # my result: /usr/sbin/tee-supplicant
 which xtest # my result: /usr/bin/xtest
 ```
-Start the supllicant daemon
-```bash
-tee-supplicant &
-```
-> The above command gives me an error which I am debugging; nonetheless the OP-TEE test suite below still runs successfully.
+> Some tutorials instruct that you run the `tee-supplicant` daemon with `tee-supplicant &` at this step. However, in our case, this daemon is already loaded at boot (check with `ps -elf`) so trying to re-run the supplicant may result in an error. 
 
 Run the [OP-TEE xtest](https://optee.readthedocs.io/en/latest/building/gits/optee_test.html), a TEE sanity tests suite for OP-TEE on Arm TrustZone. 
 ```bash

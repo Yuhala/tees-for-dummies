@@ -26,7 +26,7 @@ make -j2 toolchains
 
 ```bash
 #make PLATFORM=stm32mp1-157A_DK1 all  
-make PLATFORM=stm32mp1-157C_DK2 all
+make PLATFORM=stm32mp1-157C_DK2 all # or multi-threaded: make -j`nproc` PLATFORM=stm32mp1-157C_DK2 all
 ```
 This step takes some time. If you encounter build issues, you can pipe the build to a log file and check for errors. In this case, you should also avoid the `-j` flag for multi-threaded build so the log results are understandable. 
 
@@ -67,9 +67,10 @@ picocom -b 115200 /dev/ttyACM0
 After entering the last command above, power the board. You should see the boot process and a login prompt. I have something like:
 ```bash
 ...
- 
+OP-TEE embedded distrib for stm32mp1-157C_DK2
+buildroot login:
 ```
-This login prompt means you have successfully booted in Linux. Enter `root` in the login prompt and press `Enter`. If you enter `cd /`, you can see the minimal Linux userland. Now we can test OP-TEE.
+This login prompt means you have successfully booted Linux. Enter `root` in the login prompt and press `Enter`. If you enter `cd /`, you can see the minimal Linux userland. Now we can test OP-TEE.
 
 ## Testing OP-TEE
 In Buildroot, OP-TEE consists of: `TEE supplicant` running in normal world, `libteec.so` (client library), and `xtest` (test TAs). Confirm these are present with:

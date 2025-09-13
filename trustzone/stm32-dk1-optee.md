@@ -22,9 +22,11 @@ make -j2 toolchains
 ```
 5. **Build the solution**: This is the core compilation step where all the downloaded source code components (OP-TEE OS, Linux kernel, Trusted Firmware-A, U-Boot, xtest, the root filesystem, etc.) are compiled together to create a complete, bootable software stack for your chosen platform. 
 <!-- When following the official documentation, for our chosen board, the platform used in the build should be `PLATFORM=stm32mp1-157A_DK1`. However, after building and testing on the board, I had issues starting tee-supplicant and missing `/dev/tee`. After reading some GitHub issues on a similar subject, this problem can be avoided by simply not specifying the `PLATFORM` in the make instruction, which we do below.-->
-> Below build command is being debugged as there is an issue with OP-TEE after booting into the built kernel. So, as of now, this README is incomplete.
+> From the OP-TEE website, the `PLATFORM` option corresponding to the `STM32MP1-57D-DK1` should be `stm32mp1-157A_DK1`. However, for some reason, the OP-TEE driver isn't properly configured and OP-TEE doesn't work after boot. I tried a different value: `PLATFORM=stm32mp1-157C_DK2_SCMI` and this seems to boot correctly and run OP-TEE tests successfully. While it works, we may stumble on some issues in the future because the board configuration for the 157C-DK2 is not necessarily the same for the 157D-DK1. I've opened an issue on the OP-TEE GitHub repo and hope the issue will be resolved soon.
+
 ```bash
-make -j `nproc` PLATFORM=stm32mp1-157A_DK1 all 
+#make PLATFORM=stm32mp1-157A_DK1 all  
+make PLATFORM=stm32mp1-157C_DK2 all
 ```
 This step takes some time. If you encounter build issues, you can pipe the build to a log file and check for errors. In this case, you should also avoid the `-j` flag for multi-threaded build so the log results are understandable. 
 
@@ -65,39 +67,9 @@ picocom -b 115200 /dev/ttyACM0
 After entering the last command above, power the board. You should see the boot process and a login prompt. I have something like:
 ```bash
 ...
-[    3.033417] hub 1-0:1.0: 1 port detected
-[    3.045219] ehci-platform 5800d000.usb: EHCI Host Controller
-[    3.049526] ehci-platform 5800d000.usb: new USB bus registered, assigned bus number 2
-[    3.059427] ehci-platform 5800d000.usb: irq 69, io mem 0x5800d000
-[    3.080933] ehci-platform 5800d000.usb: USB 2.0 started, EHCI 1.00
-[    3.087154] hub 2-0:1.0: USB hub found
-[    3.089597] hub 2-0:1.0: 2 ports detected
-[    3.106146] EXT4-fs (mmcblk0p5): mounting ext2 file system using the ext4 subsystem
-[    3.118927] EXT4-fs (mmcblk0p5): warning: mounting unchecked fs, running e2fsck is recommended
-[    3.129533] EXT4-fs (mmcblk0p5): mounted filesystem fb8ce85a-0558-4528-a5cb-8873aa3885b8 r/w without journal. Quota mode: disabled.
-[    3.140264] VFS: Mounted root (ext2 filesystem) on device 179:5.
-[    3.149824] devtmpfs: mounted
-[    3.155829] Freeing unused kernel image (initmem) memory: 2048K
-[    3.161056] Run /sbin/init as init process
-[    3.345598] EXT4-fs (mmcblk0p5): re-mounted fb8ce85a-0558-4528-a5cb-8873aa3885b8 r/w. Quota mode: disabled.
-[    3.361067] usb 2-1: new high-speed USB device number 2 using ehci-platform
-Seeding 256 bits and crediting
-Saving 256 bits of creditable seed for next boot
-Starting syslogd: OK
-Starting klogd: OK
-[    3.533856] hub 2-1:1.0: USB hub found
-Running sysctl: [    3.539363] hub 2-1:1.0: 4 ports detected
-OK
-Starting watchdog...
-Set permissions on /dev/tee*: chown: /dev/teepriv0: No such file or directory
-FAIL
-Starting network: OK
-Starting crond: OK
-
-OP-TEE embedded distrib for stm32mp1-157A_DK1
-buildroot login: 
+ 
 ```
-This login prompt is good news!! It means our OP-TEE build and Linux Kernel are running successfully. Enter `root` in the login prompt and press `Enter`. If you enter `cd /`, you can see the minimal Linux userland. Now we can test OP-TEE.
+This login prompt means you have successfully booted in Linux. Enter `root` in the login prompt and press `Enter`. If you enter `cd /`, you can see the minimal Linux userland. Now we can test OP-TEE.
 
 ## Testing OP-TEE
 In Buildroot, OP-TEE consists of: `TEE supplicant` running in normal world, `libteec.so` (client library), and `xtest` (test TAs). Confirm these are present with:
@@ -109,6 +81,8 @@ Start the supllicant daemon
 ```bash
 tee-supplicant &
 ```
+> The above command gives me an error which I am debugging; nonetheless the OP-TEE test suite below still runs successfully.
+
 Run the [OP-TEE xtest](https://optee.readthedocs.io/en/latest/building/gits/optee_test.html), a TEE sanity tests suite for OP-TEE on Arm TrustZone. 
 ```bash
 xtest

@@ -94,7 +94,7 @@ xtest
 
 ## Troubleshooting
 > The [OP-TEE Git repo]() has a list of open and closed issues which may help you.
-- I opened a GitHub issue [here](https://github.com/OP-TEE/optee_os/issues/7521) on some issues I came across while testing OP-TEE on this board. The next article provides tips that solved my issue.
+- I opened a GitHub issue [here](https://github.com/OP-TEE/optee_os/issues/7521) on some issues I came across while testing OP-TEE on this board. The next article provides tips that may help in solving similar issues.
 - [STM32 MPU OP-TEE configuration switches.](https://wiki.st.com/stm32mpu/wiki/OP-TEE_configuration_switches)
 - [STM32 MPU How to build OP-TEE components](https://wiki.st.com/stm32mpu/wiki/How_to_build_OP-TEE_components)
   

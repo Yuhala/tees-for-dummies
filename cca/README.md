@@ -9,7 +9,7 @@ As shown in the figure below, CCA introduces _Realm world_, a new physical addre
   <img src="arm-cca-arch.png" alt="Arm CCA architecture" width="75%">
 </p>
 
-The RMM also exposes a _Realm Services Interface_ (RSI) through which Realms can request operation for attestation reports, the management of shared memory, etc. A higher-level privilege secure monitor running in at privilege level EL3 in a new world called Root world. The monitor controls all CPU context switching among the three worlds. 
+The RMM also exposes a _Realm Services Interface_ (RSI) through which Realms can request operation for attestation reports, the management of shared memory, etc. A higher-level privilege monitor running in at privilege level EL3 in a new world called Root world. The monitor controls all CPU context switching among the three worlds. 
 
 > The Root world was introduced because Realm and Secure worlds are mutually distrusting. The Root world has access to the entire physical address space. Each CPU core can program the access mode of physical address ranges to be root, realm, secure, or normal world, and a special data structure called the _granule protection table_ (GPT) tracks which physical address belongs to which of the four worlds.
 See [this paper](https://www.usenix.org/system/files/osdi22-li.pdf) to understand the access control policy of CCA for each world.
@@ -23,3 +23,4 @@ There is currently no commercialized hardware with Arm CCA support. Most researc
 - [Design and Verification of the Arm Confidential Compute Architecture](https://www.usenix.org/system/files/osdi22-li.pdf)
 - [Arm CCA: A New Model of Trusted Execution Environment On The ARM Architecture](https://sys.cs.fau.de/extern/lehre/ws22/akss/material/arm-cca.pdf)
 - [ACAI: Protecting Accelerator Execution with Arm Confidential Computing Architecture](https://www.usenix.org/system/files/sec24summer-prepub-56-sridhara.pdf)
+- [Confidential Compute Architecture(CCA) on Armv9.2+ Microprocessors](https://gufranmirza.com/blogs/arm-confidential-compute-architecture)

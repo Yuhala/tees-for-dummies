@@ -6,7 +6,7 @@
 As shown in the figure below, CCA introduces _Realm world_, a new physical address space for Realms, separate from existing _non-secure_ (NS)/normal world for running untrusted software stacks, and secure world for deploying trusted applications (See [Arm TrustZone](../trustzone/README.md)). A _realm management monitor_ (RMM) runs in Realm world at a higher privilege level that Realm VMs; it provides the host OS services allowing it to create, populate, execute, and destroy Realms, through a _Realm Management Interface_ (RMI). Each RMI command is implemented as a secure monitor call (SMC), which traps to EL3 monitor, which in turn switches execution to the RMM in Realm world to handle the command. Upon completion of the RMI command, the RMM issues an SMC to ELM3M, which then switches execution back to the hypervisor in Normal world.
 
 <p align="center">
-  <img src="arm-cca-arch.png" alt="Arm CCA architecture" width="75%">
+  <img src="arm-cca-arch.png" alt="Arm CCA architecture" width="80%">
 </p>
 
 The RMM also exposes a _Realm Services Interface_ (RSI) through which Realms can request operation for attestation reports, the management of shared memory, etc. A higher-level privilege monitor running in at privilege level EL3 in a new world called Root world. The monitor controls all CPU context switching among the three worlds. 

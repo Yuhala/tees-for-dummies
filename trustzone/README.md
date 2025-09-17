@@ -6,7 +6,7 @@ A hardware component called the **TrustZone address space controller**(TZASC) en
 
 <!--![Arm TrustZone architecture](./tz-arch.png)-->
 <p align="center">
-  <img src="tz-arch.png" alt="Arm TrustZone architecture" width="60%">
+  <img src="tz-arch.png" alt="Arm TrustZone architecture" width="50%">
 </p>
 
 Contrary to TEE technologies like SGX which encrypt data stored in memory, TZ only performs access control checks to ensure confidentiality. 

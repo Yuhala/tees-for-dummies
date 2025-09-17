@@ -2,12 +2,14 @@
 
 Arm TrustZone (TZ) is a hardware security extension in ARM-based processors that allows the processor to be split into two protection domains: a **secure world**, wherein data is processed securely and isolated from the host OS (or hypervisor), and a **normal world** which has no access to secure world resources. At any point in time, the processor operates exclusively in one of these worlds. A privileged software component called a _secure monitor_ enables context switching between both worlds using _secure monitor calls_ (SMC), analogous to SGX ecalls and ocalls.
 
-A hardware component called the **TrustZone address space controller**(TZASC) enforces the separation between the secure world and the normal world by controlling access to physical memory. Essentially, TZASC can be programmed/configured such that some parts of physical memory (contiguous blocks) are only accessible in the secure world, or both worlds. A special bit called the _non-secure_ (NS) bit, stored in the _secure configuration register_(SCR), is used to determine which world the processor is currently operating in.
+A hardware component called the **TrustZone address space controller** (TZASC) enforces the separation between the secure world and the normal world by controlling access to physical memory. Essentially, TZASC can be programmed/configured such that some parts of physical memory (contiguous blocks) are only accessible in the secure world, or both worlds. A special bit called the _non-secure_ (NS) bit, stored in the _secure configuration register_ (SCR), is used to determine which world the processor is currently operating in.
 
 <!--![Arm TrustZone architecture](./tz-arch.png)-->
 <p align="center">
   <img src="tz-arch.png" alt="Arm TrustZone architecture" width="50%">
 </p>
+
+A similar hardware component called the **TrustZone protection controller** (TZPC) arbitrates access to peripherals. TZPC can be configured such that a peripheral is accessible only from the secure world, or both secure and normal world.
 
 Contrary to TEE technologies like SGX which encrypt data stored in memory, TZ only performs access control checks to ensure confidentiality. 
 

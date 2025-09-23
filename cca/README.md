@@ -9,7 +9,7 @@ As shown in the figure below, CCA introduces _Realm world_, a new physical addre
   <img src="arm-cca-arch.png" alt="Arm CCA architecture" width="80%">
 </p>
 
-The RMM also exposes a _Realm Services Interface_ (RSI) through which Realms can request operation for attestation reports, the management of shared memory, etc. A higher-level privilege monitor running in at privilege level EL3 in a new world called Root world. The monitor controls all CPU context switching among the three worlds. 
+The RMM also exposes a _Realm Services Interface_ (RSI) through which Realms can request operation for attestation reports, the management of shared memory, etc. A higher-level privilege monitor runs at privilege level EL3 in a new world called Root world. The monitor controls all CPU context switching among the three worlds. 
 
 > The Root world was introduced because Realm and Secure worlds are mutually distrusting. The Root world has access to the entire physical address space. Each CPU core can program the access mode of physical address ranges to be root, realm, secure, or normal world, and a special data structure called the _granule protection table_ (GPT) tracks which physical address belongs to which of the four worlds.
 See [this paper](https://www.usenix.org/system/files/osdi22-li.pdf) to understand the access control policy of CCA for each world.

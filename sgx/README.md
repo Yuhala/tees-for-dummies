@@ -5,7 +5,7 @@
 At boot time, the BIOS/firmware allocates a portion of DRAM called _processor reserved memory_ (PRM) to be used by SGX. PRM pages are encrypted with a key only known to the CPU. Most of the PRM comprises the _enclave page cache_ (EPC), which is DRAM used by SGX enclaves at runtime. When an application creates an SGX enclave, part of its virtual address space (the enclave) is mapped to this encrypted DRAM region. The pages are transparently decrypted[^1] by an extension of the memory controller called the _memory encryption engine_ (MEE) when they are copied into CPU cache lines. The page tables are still managed by the OS, but the latter cannot access any page in enclave memory. The CPU also performs access control checks to ensure one enclave doesn't access the memory of another enclave. 
 
 <p align="center">
-  <img src="sgx-arch.png" alt="SGX security design" width="75%">
+  <img src="sgx-arch.png" alt="SGX security design" width="90%">
 </p>
 
 A microarchitectural structure called the _enclave page cache map_ (EPCM) tracks each EPC page in an EPCM entry which describes the owning enclave, access rights, page type, etc.

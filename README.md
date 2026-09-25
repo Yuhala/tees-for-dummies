@@ -45,8 +45,11 @@ All the tutorials are Linux-based (mostly Ubuntu). Some links may be added to re
 
 The tutorials assume you have TEE-enabled hardware and do not require techniques like remote attestation for hardware verification (used in production). Nevertheless, we provide information on what kind of hardware supports the TEE technology.
 
+Note: if you prefer a more "blog-based" format, I have added the same READMEs to my blog here: https://dtechub.github.io/posts/tees-for-dummies/
 
 ## Contributing
 Contributions of any kind are welcome! We will publish contributing guidelines and accept pull requests after the project gets more stable.
+
+For more questions, please contact me at: petersonyuhala@gmail.com
   
 
